@@ -13,13 +13,42 @@ public class Person {
 	Person(String name, String vorname, Date geburtstag, Standort standort, Date anstellungstag) {
 		this.name = name;
 		this.vorname = vorname;
-		this.geburtstag = geburtstag;
-		this.standort = standort;
-		this.anstellungstag = anstellungstag;
+		this.setGeburtstag(geburtstag);
+		this.setStandort(standort);
+		this.setAnstellungstag(anstellungstag);
 	}
 
 	public String getName() {
 		return name;
+	}
+
+	public String getVorname() {
+		return vorname;
+	}
+
+	public Date getGeburtstag() {
+		return geburtstag;
+	}
+
+	private void setGeburtstag(Date geburtstag) {
+		this.geburtstag = geburtstag;
+
+	}
+
+	public Standort getStandort() {
+		return standort;
+	}
+
+	public void setStandort(Standort standort) {
+		this.standort = standort;
+	}
+
+	public Date getAnstellungstag() {
+		return anstellungstag;
+	}
+
+	public void setAnstellungstag(Date anstellungstag) {
+		this.anstellungstag = anstellungstag;
 	}
 
 }
