@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import mitarbeiterdb.contract.IConnector;
@@ -27,7 +28,25 @@ public class Connector implements IConnector {
 
 	@Override
 	public void setupDB() throws SQLException {
-		// TODO Auto-generated method stub
+		try {
+			var sqlBuilder = new SQLBuilder();
+			connection = DriverManager.getConnection(url, user, password);
+			statement = connection.createStatement();
+
+			// setup table 'personen'
+			statement.execute(sqlBuilder.dropTable("personen"));
+			statement.execute(sqlBuilder.createTablePersonen());
+			statement.execute(sqlBuilder.fillTablePersonen());
+
+			// setup table 'standorte'
+			statement.execute(sqlBuilder.dropTable("standorte"));
+			statement.execute(sqlBuilder.createTableStandorte());
+			statement.execute(sqlBuilder.fillTableStandorte());
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			close();
+		}
 
 	}
 
@@ -51,7 +70,8 @@ public class Connector implements IConnector {
 			connection = DriverManager.getConnection(url, user, password);
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(sql);
-			return null; // TODO resultSet to List
+			return convertToList(resultSet);
+
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -60,18 +80,30 @@ public class Connector implements IConnector {
 
 	}
 
-	@Override
-	public List<String> getTableHeaders(String table) throws SQLException {
-		try {
-			connection = DriverManager.getConnection(url, user, password);
-			statement = connection.createStatement();
-			resultSet = statement.executeQuery("select column_name from mitarbeiter;");
-			return null; // TODO resultSet to List
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			close();
+	private List<List<?>> convertToList(ResultSet resultSet) throws SQLException {
+		var resultList = new ArrayList<List<?>>();
+		var metadata = resultSet.getMetaData();
+		var columnCount = metadata.getColumnCount();
+
+		// column names
+		var columnNames = new ArrayList<String>();
+		for (int i = 1; i <= columnCount; i++) {
+			columnNames.add(metadata.getColumnName(i));
 		}
+		resultList.add(columnNames);
+
+		// data records
+		while (resultSet.next()) {
+			var dataSet = new ArrayList<String>();
+			for (int i = 1; i <= columnCount; i++) {
+				dataSet.add(resultSet.getString(i));
+			}
+			resultList.add(dataSet);
+		}
+
+		resultList.forEach(System.out::println);
+		return resultList;
+
 	}
 
 	private void close() {

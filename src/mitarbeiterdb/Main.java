@@ -18,9 +18,14 @@ public class Main {
 		var db = Connector.getInstance();
 		var sql = new SQLBuilder();
 		try {
-			db.sendSQLQuery("select * from personendaten");
-			System.out.println(sql.setupDB());
-			db.sendSQLExpression(sql.setupDB());
+			db.setupDB();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		try {
+			db.sendSQLQuery("SELECT * FROM personen;");
+			db.sendSQLQuery("SELECT * FROM standorte;");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

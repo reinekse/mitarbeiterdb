@@ -10,6 +10,4 @@ public interface IConnector {
 
 	List<List<?>> sendSQLQuery(String sql) throws SQLException;
 
-	List<String> getTableHeaders(String table) throws SQLException;
-
 }
