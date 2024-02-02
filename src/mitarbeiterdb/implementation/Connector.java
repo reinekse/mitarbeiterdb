@@ -33,15 +33,20 @@ public class Connector implements IConnector {
 			connection = DriverManager.getConnection(url, user, password);
 			statement = connection.createStatement();
 
-			// setup table 'personen'
+			// drop existing tables
+			// (drop 'personen' first, because 'standort_id' is foreign key!)
 			statement.execute(sqlBuilder.dropTable("personen"));
+			statement.execute(sqlBuilder.dropTable("standorte"));
+
+			// create new tables
+			// (create 'standorte' first, because 'standort_id' is foreign key!)
+			statement.execute(sqlBuilder.createTableStandorte());
 			statement.execute(sqlBuilder.createTablePersonen());
+
+			// fill tables with data
+			statement.execute(sqlBuilder.fillTableStandorte());
 			statement.execute(sqlBuilder.fillTablePersonen());
 
-			// setup table 'standorte'
-			statement.execute(sqlBuilder.dropTable("standorte"));
-			statement.execute(sqlBuilder.createTableStandorte());
-			statement.execute(sqlBuilder.fillTableStandorte());
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -54,8 +59,10 @@ public class Connector implements IConnector {
 	public void sendSQLExpression(String sql) throws SQLException {
 		try {
 			connection = DriverManager.getConnection(url, user, password);
+			System.out.println("\n\n" + sql + "\n");
 			statement = connection.createStatement();
 			statement.execute(sql);
+
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -68,8 +75,10 @@ public class Connector implements IConnector {
 	public List<List<?>> sendSQLQuery(String sql) throws SQLException {
 		try {
 			connection = DriverManager.getConnection(url, user, password);
+			System.out.println("\n\n" + sql + "\n");
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(sql);
+
 			return convertToList(resultSet);
 
 		} catch (Exception e) {
@@ -85,14 +94,14 @@ public class Connector implements IConnector {
 		var metadata = resultSet.getMetaData();
 		var columnCount = metadata.getColumnCount();
 
-		// column names
+		// add column names
 		var columnNames = new ArrayList<String>();
 		for (int i = 1; i <= columnCount; i++) {
 			columnNames.add(metadata.getColumnName(i));
 		}
 		resultList.add(columnNames);
 
-		// data records
+		// add data records
 		while (resultSet.next()) {
 			var dataSet = new ArrayList<String>();
 			for (int i = 1; i <= columnCount; i++) {
