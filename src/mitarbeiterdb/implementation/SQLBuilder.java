@@ -6,20 +6,27 @@ public class SQLBuilder {
 
 	}
 
-	public String dropTable(String table) {
-		return "DROP TABLE IF EXISTS " + table + ";";
+	public String select(String columns, String table) {
+		var sql = "SELECT " + columns + " FROM " + table + ";";
+		return sql;
+
 	}
 
-	// TODO autogenerate IDs
+	public String dropTable(String table) {
+		var sql = "DROP TABLE IF EXISTS " + table + ";";
+		return sql;
+	}
+
 	public String createTablePersonen() {
-		return "CREATE TABLE personen(" + "id INT NOT NULL AUTO_INCREMENT, " + "name VARCHAR(50), "
+		var sql = "CREATE TABLE personen(" + "id INT NOT NULL AUTO_INCREMENT, " + "name VARCHAR(50), "
 				+ "vorname VARCHAR(50), " + "geburtstag DATE, " + "abteilung VARCHAR(50), " + "standort_id INT, "
 				+ "anstellungstag DATE, " + "PRIMARY KEY(id), " + "FOREIGN KEY (standort_id) REFERENCES standorte(id)"
 				+ ");";
+		return sql;
 	}
 
 	public String fillTablePersonen() {
-		return "INSERT INTO personen (name, vorname, geburtstag, abteilung, standort_id, anstellungstag)" + " VALUES"
+		var sql = "INSERT INTO personen (name, vorname, geburtstag, abteilung, standort_id, anstellungstag)" + " VALUES"
 				+ "('Mönkeberg', 'Petra', '1967-03-17', 'E1', 1, '2019-02-01'), "
 				+ "('Hildebrandt', 'Louis', '1997-04-12', 'E1', 1, '2020-04-01'), "
 				+ "('Kowalski', 'Benedikt', '1972-01-13', 'E2', 1, '2010-05-01'), "
@@ -34,6 +41,7 @@ public class SQLBuilder {
 				+ "('Leew', 'Mareike', '1987-04-22', 'A1', 1, '2015-08-01'), "
 				+ "('Schnieders', 'Martin', '1981-09-11', 'C1', 3, '2023-05-01'), "
 				+ "('Meyer-Friedrichsen', 'Julian', '1990-06-18', 'A2', 1, '2022-10-01')" + ";";
+		return sql;
 	}
 
 	public String createTableStandorte() {
