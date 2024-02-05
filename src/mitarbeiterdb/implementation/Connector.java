@@ -19,7 +19,11 @@ public class Connector implements IConnector {
 	private Statement statement = null;
 	private ResultSet resultSet = null;
 
-	public static Connector getInstance() {
+	private Connector() throws SQLException {
+		this.connection = DriverManager.getConnection(url, user, password);
+	}
+
+	public static Connector getInstance() throws SQLException {
 		if (instance == null) {
 			instance = new Connector();
 		}
@@ -30,7 +34,6 @@ public class Connector implements IConnector {
 	public void setupDB() throws SQLException {
 		try {
 			var sqlBuilder = new SQLBuilder();
-			connection = DriverManager.getConnection(url, user, password);
 			statement = connection.createStatement();
 
 			// drop existing tables
@@ -58,7 +61,6 @@ public class Connector implements IConnector {
 	@Override
 	public void sendSQLExpression(String sql) throws SQLException {
 		try {
-			connection = DriverManager.getConnection(url, user, password);
 			System.out.println("\n\n" + sql + "\n");
 			statement = connection.createStatement();
 			statement.execute(sql);
@@ -74,7 +76,6 @@ public class Connector implements IConnector {
 	@Override
 	public List<List<?>> sendSQLQuery(String sql) throws SQLException {
 		try {
-			connection = DriverManager.getConnection(url, user, password);
 			System.out.println("\n\n" + sql + "\n");
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(sql);
@@ -122,9 +123,6 @@ public class Connector implements IConnector {
 			}
 			if (statement != null) {
 				statement.close();
-			}
-			if (connection != null) {
-				connection.close();
 			}
 		} catch (Exception e) {
 		}
