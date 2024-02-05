@@ -1,15 +1,53 @@
 package mitarbeiterdb.implementation;
 
 public class SQLBuilder {
-	public String selectAll(String table) {
-		return "SELECT * FROM " + table + ";";
+
+	public String select(String table) {
+		var sql = "SELECT * FROM " + table + ";";
+		return sql;
+	}
+
+	public String select(String table, String columns) {
+		var sql = "SELECT " + columns + " FROM " + table + ";";
+		return sql;
+	}
+
+	public String select(String table, String columns, String condition) {
+		var sql = "SELECT " + columns + " FROM " + table + " WHERE " + condition + ";";
+		return sql;
+	}
+
+	public String update(String table, String columns, String values, String condition) {
+		var colArr = columns.split(",");
+		var valArr = values.split(",");
+		var setStatement = "";
+		for (int i = 0; i < colArr.length; i++) {
+			setStatement += colArr[i];
+			setStatement += " = ";
+			setStatement += valArr[i];
+			if (i < colArr.length - 1) {
+				setStatement += ", ";
+			}
+		}
+
+		var sql = "UPDATE " + table + " SET " + setStatement + " WHERE " + condition + ";";
+		return sql;
 
 	}
 
-	public String select(String columns, String table) {
-		var sql = "SELECT " + columns + " FROM " + table + ";";
+	public String insert(String table, String columns, String values) {
+		var sql = "INSERT INTO " + table + " (" + columns + ") VALUES (" + values + ");";
 		return sql;
+	}
 
+	public String deleteRows(String table) {
+		var sql = "DELETE FROM " + table + ";";
+		return sql;
+	}
+
+	public String deleteRows(String table, String condition) {
+		var sql = "DELETE FROM " + table + " WHERE " + condition + ";";
+		return sql;
 	}
 
 	public String dropTable(String table) {
