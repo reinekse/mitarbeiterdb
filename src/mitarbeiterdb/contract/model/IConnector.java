@@ -1,4 +1,4 @@
-package mitarbeiterdb.contract;
+package mitarbeiterdb.contract.model;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -2,8 +2,8 @@ package mitarbeiterdb;
 
 import java.sql.SQLException;
 
-import mitarbeiterdb.implementation.Connector;
-import mitarbeiterdb.implementation.SQLBuilder;
+import mitarbeiterdb.implementation.model.Connector;
+import mitarbeiterdb.implementation.model.SQLBuilder;
 
 public class Main {
 

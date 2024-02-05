@@ -1,11 +1,11 @@
-package mitarbeiterdb.test;
+package mitarbeiterdb.test.model;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import mitarbeiterdb.implementation.SQLBuilder;
+import mitarbeiterdb.implementation.model.SQLBuilder;
 
 public class SQLBuilderTest {
 	private SQLBuilder sqlBuilder;

@@ -1,4 +1,4 @@
-package mitarbeiterdb.implementation;
+package mitarbeiterdb.implementation.model;
 
 public class SQLBuilder {
 

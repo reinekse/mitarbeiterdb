@@ -1,4 +1,4 @@
-package mitarbeiterdb.implementation;
+package mitarbeiterdb.implementation.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import mitarbeiterdb.contract.IConnector;
+import mitarbeiterdb.contract.model.IConnector;
 
 public class Connector implements IConnector {
 	final String url = "jdbc:mysql://localhost/mitarbeiter?";
