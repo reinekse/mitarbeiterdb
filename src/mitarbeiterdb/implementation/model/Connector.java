@@ -11,7 +11,6 @@ import java.util.List;
 import mitarbeiterdb.contract.model.IConnector;
 
 public class Connector implements IConnector {
-	final String url = "jdbc:mysql://localhost/mitarbeiter?";
 	final String user = "java_app";
 	final String password = "password";
 	private static Connector instance;
@@ -19,13 +18,13 @@ public class Connector implements IConnector {
 	private Statement statement = null;
 	private ResultSet resultSet = null;
 
-	private Connector() throws SQLException {
+	private Connector(String url) throws SQLException {
 		this.connection = DriverManager.getConnection(url, user, password);
 	}
 
-	public static Connector getInstance() throws SQLException {
+	public static Connector getInstance(String url) throws SQLException {
 		if (instance == null) {
-			instance = new Connector();
+			instance = new Connector(url);
 		}
 		return instance;
 	}
@@ -87,6 +86,12 @@ public class Connector implements IConnector {
 		} finally {
 			close();
 		}
+
+	}
+
+	public int getNumberOfRows(String table) throws SQLException {
+		var result = sendSQLQuery("SELECT COUNT(*) FROM " + table);
+		return Integer.parseInt(result.get(1).get(0).toString());
 
 	}
 

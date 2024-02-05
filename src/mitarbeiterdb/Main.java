@@ -8,8 +8,18 @@ import mitarbeiterdb.implementation.model.SQLBuilder;
 public class Main {
 
 	public static void main(String[] args) throws SQLException {
+		/*
+		 * JFrame frame = new JFrame("HelloWorldSwing"); JLabel label = new
+		 * JLabel("Hello World"); // frame.getContentPane().add(label);
+		 * frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); frame.setLayout(new
+		 * BorderLayout()); JPanel panel = new JPanel(); panel.setLayout(new
+		 * GridLayout(2, 3)); // Zeilen, Spalten frame.add(panel, BorderLayout.CENTER);
+		 * 
+		 * frame.pack(); // auf preferred size setzen und Komponenten layouten
+		 * frame.setVisible(true);
+		 */
 
-		var db = Connector.getInstance();
+		var db = Connector.getInstance("jdbc:mysql://localhost/mitarbeiter?");
 		var sql = new SQLBuilder();
 
 		try {
