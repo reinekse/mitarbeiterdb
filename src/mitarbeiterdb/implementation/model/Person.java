@@ -10,7 +10,10 @@ public class Person {
 	private Standort standort;
 	private Date anstellungstag;
 
-	Person(String name, String vorname, Date geburtstag, Standort standort, Date anstellungstag) {
+	public Person() {
+	}
+
+	public Person(String name, String vorname, Date geburtstag, Standort standort, Date anstellungstag) {
 		this.name = name;
 		this.vorname = vorname;
 		this.setGeburtstag(geburtstag);
