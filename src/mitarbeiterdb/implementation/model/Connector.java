@@ -22,6 +22,14 @@ public class Connector implements IConnector {
 		this.connection = DriverManager.getConnection(url, user, password);
 	}
 
+	public static Connector getInstance() throws SQLException {
+		if (instance == null) {
+			instance = new Connector("jdbc:mysql://localhost/mitarbeiter?");
+		}
+		return instance;
+	}
+
+	// to set uo connection for unit tests
 	public static Connector getInstance(String url) throws SQLException {
 		if (instance == null) {
 			instance = new Connector(url);

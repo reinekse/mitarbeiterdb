@@ -9,13 +9,13 @@ import mitarbeiterdb.implementation.view.Frame;
 public class Main {
 
 	public static void main(String[] args) throws SQLException {
-		var db = Connector.getInstance("jdbc:mysql://localhost/mitarbeiter?");
+		var db = Connector.getInstance();
 		db.setupDB();
 		var personen = db.sendSQLQuery("SELECT * FROM personen");
-		var PersonenTableModel = new TableModel(personen);
+		var personenTableModel = new TableModel(personen);
 		var standorte = db.sendSQLQuery("SELECT * FROM standorte");
-		var StandorteTableModel = new TableModel(standorte);
-		new Frame(PersonenTableModel, StandorteTableModel);
+		var standorteTableModel = new TableModel(standorte);
+		new Frame(personenTableModel, standorteTableModel);
 	}
 
 }

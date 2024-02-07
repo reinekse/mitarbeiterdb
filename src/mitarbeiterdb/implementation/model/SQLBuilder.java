@@ -2,7 +2,7 @@ package mitarbeiterdb.implementation.model;
 
 public class SQLBuilder {
 
-	public String select(String table) {
+	public String selectAll(String table) {
 		var sql = "SELECT * FROM " + table + ";";
 		return sql;
 	}
