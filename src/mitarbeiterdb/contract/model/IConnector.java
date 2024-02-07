@@ -8,6 +8,6 @@ public interface IConnector {
 
 	void sendSQLExpression(String sql) throws SQLException;
 
-	List<List<?>> sendSQLQuery(String sql) throws SQLException;
+	List<List<String>> sendSQLQuery(String sql) throws SQLException;
 
 }

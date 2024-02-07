@@ -73,7 +73,7 @@ public class Connector implements IConnector {
 	}
 
 	@Override
-	public List<List<?>> sendSQLQuery(String sql) throws SQLException {
+	public List<List<String>> sendSQLQuery(String sql) throws SQLException {
 		try {
 			System.out.println("\n\n" + sql + "\n");
 			statement = connection.createStatement();
@@ -95,8 +95,8 @@ public class Connector implements IConnector {
 
 	}
 
-	private List<List<?>> convertToList(ResultSet resultSet) throws SQLException {
-		var resultList = new ArrayList<List<?>>();
+	private List<List<String>> convertToList(ResultSet resultSet) throws SQLException {
+		var resultList = new ArrayList<List<String>>();
 		var metadata = resultSet.getMetaData();
 		var columnCount = metadata.getColumnCount();
 
