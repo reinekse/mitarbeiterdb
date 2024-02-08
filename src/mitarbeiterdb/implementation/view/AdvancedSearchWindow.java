@@ -6,19 +6,16 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
-public class EditWindow extends JDialog {
+public class AdvancedSearchWindow extends JDialog {
 
-	private int rowIndex;
-
-	public EditWindow(JPanel parent, int rowIndex) {
-		this.rowIndex = rowIndex;
-
+	AdvancedSearchWindow(JPanel parent) {
 		setSize(400, 500);
 		setLayout(new FlowLayout());
+		add(new JPanel());
 		add(new PersonenTextFields());
 
-		JButton saveButton = new JButton("Speichern");
-		saveButton.addActionListener(e -> {
+		JButton searchButton = new JButton("Suchen");
+		searchButton.addActionListener(e -> {
 			// String value1 = textField1.getText();
 			// String value2 = textField2.getText();
 			// ...
@@ -28,7 +25,7 @@ public class EditWindow extends JDialog {
 
 			dispose(); // Bearbeiten-Fenster schließen
 		});
-		add(saveButton);
+		add(searchButton);
 		setVisible(true);
 	}
 

@@ -19,6 +19,9 @@ import mitarbeiterdb.implementation.controller.TableModel;
 public abstract class Tab extends JPanel {
 
 	Tab(TableModel model) throws SQLException {
+		setLayout(new BorderLayout());
+		add(new SearchPanel(), BorderLayout.PAGE_START);
+
 		var table = new JTable(model);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
@@ -27,7 +30,6 @@ public abstract class Tab extends JPanel {
 			}
 		});
 
-		setLayout(new BorderLayout());
 		add(new JScrollPane(table), BorderLayout.CENTER);
 	}
 
@@ -60,7 +62,6 @@ public abstract class Tab extends JPanel {
 
 	private void showEditDialog(int row) {
 		var editWindow = new EditWindow(this, row);
-		editWindow.setVisible(true);
 		System.out.println("Bearbeiten: Zeile " + row);
 	}
 
