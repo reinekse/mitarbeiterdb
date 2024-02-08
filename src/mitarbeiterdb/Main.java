@@ -2,6 +2,8 @@ package mitarbeiterdb;
 
 import java.sql.SQLException;
 
+import com.formdev.flatlaf.FlatLightLaf;
+
 import mitarbeiterdb.implementation.controller.TableModel;
 import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.view.Frame;
@@ -9,6 +11,8 @@ import mitarbeiterdb.implementation.view.Frame;
 public class Main {
 
 	public static void main(String[] args) throws SQLException {
+
+		FlatLightLaf.setup();
 		var db = Connector.getInstance();
 		db.setupDB();
 		var personen = db.sendSQLQuery("SELECT * FROM personen");

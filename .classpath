@@ -7,6 +7,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="//d-fs.fhhnet.stadt.hamburg.de/ReinekEl$/Eigene Dateien/Hospitationen und Schulungen/Hospitation3/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar"/>
+	<classpathentry kind="lib" path="D:/Hospitationen und Schulungen/Hospitation3/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar"/>
+	<classpathentry kind="lib" path="D:/Hospitationen und Schulungen/Hospitation3/flatlaf-3.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
