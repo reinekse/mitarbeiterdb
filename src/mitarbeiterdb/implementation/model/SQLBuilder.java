@@ -2,11 +2,30 @@ package mitarbeiterdb.implementation.model;
 
 public class SQLBuilder {
 
+	// Actually needed for GUI:
 	public String selectAll(String table) {
 		var sql = "SELECT * FROM " + table + ";";
 		return sql;
 	}
 
+	public String delete(String table, String ID) {
+		var sql = "DELETE FROM " + table + " WHERE id = " + ID + ";";
+		return sql;
+	}
+
+	public String search(String table, String searchText) {
+		var sql = "SELECT * FROM " + table;
+		if (table == "personen") {
+			sql += " WHERE CONCAT_WS(' ', id, name, vorname, abteilung, standort_id, geburtstag, anstellungstag) LIKE '%"
+					+ searchText + "%'";
+		}
+		if (table == "standorte") {
+			sql += "WHERE CONCAT_WS(' ', id, strasse, hausnummer, plz, ort) LIKE '%" + searchText + "%'";
+		}
+		return sql + ";";
+	}
+
+	// Not needed for GUI:
 	public String select(String table, String columns) {
 		var sql = "SELECT " + columns + " FROM " + table + ";";
 		return sql;

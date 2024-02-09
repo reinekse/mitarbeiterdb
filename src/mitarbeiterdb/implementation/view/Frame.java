@@ -11,12 +11,11 @@ import mitarbeiterdb.implementation.controller.TableModel;
 public class Frame extends JFrame {
 
 	public Frame(TableModel personenTableModel, TableModel standorteTableModel) throws SQLException {
-
+		super("Mitarbeiter Datenbank");
 		var tabbedPane = new JTabbedPane();
-		tabbedPane.addTab("Personen", null, new PersonenTab(personenTableModel), "");
-		tabbedPane.addTab("Standorte", null, new StandorteTab(standorteTableModel), "");
+		tabbedPane.addTab("Personen", null, new Tab(personenTableModel), "");
+		tabbedPane.addTab("Standorte", null, new Tab(standorteTableModel), "");
 		add(tabbedPane);
-		// setLayout(null);
 		setSize(800, 500);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);

@@ -1,6 +1,6 @@
 package mitarbeiterdb.implementation.view;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -10,15 +10,23 @@ public class EditWindow extends JDialog {
 
 	private int rowIndex;
 
-	public EditWindow(JPanel parent, int rowIndex) {
-		this.rowIndex = rowIndex;
+	public EditWindow(Table table) {
 
-		setSize(400, 500);
-		setLayout(new FlowLayout());
-		add(new PersonenTextFields());
+		setTitle("Mitarbeiter Datenbank");
+		setLayout(new BorderLayout());
 
+		// heading
+		add(new Heading("Eintrag editieren:"), BorderLayout.PAGE_START);
+
+		// text fields
+		add(new PersonenTextFields(), BorderLayout.CENTER);
+		var padding = new JPanel();
+		add(padding, BorderLayout.LINE_END);
+
+		// buttons
 		JButton saveButton = new JButton("Speichern");
 		saveButton.addActionListener(e -> {
+			System.out.println("Editiere Zeile" + table.getSelectedRow());
 			// String value1 = textField1.getText();
 			// String value2 = textField2.getText();
 			// ...
@@ -26,9 +34,24 @@ public class EditWindow extends JDialog {
 			// Update der JTable mit den bearbeiteten Werten hier durchführen
 			// ...
 
-			dispose(); // Bearbeiten-Fenster schließen
+			dispose();
 		});
-		add(saveButton);
+		JButton resetButton = new JButton("Zurücksetzen");
+		resetButton.addActionListener(e -> {
+			dispose();
+		});
+		JButton cancelButton = new JButton("Abbrechen");
+		cancelButton.addActionListener(e -> {
+			dispose();
+		});
+		var buttonPanel = new JPanel();
+		buttonPanel.add(saveButton);
+		buttonPanel.add(resetButton);
+		buttonPanel.add(cancelButton);
+		add(buttonPanel, BorderLayout.PAGE_END);
+
+		setLocationRelativeTo(table);
+		pack();
 		setVisible(true);
 	}
 

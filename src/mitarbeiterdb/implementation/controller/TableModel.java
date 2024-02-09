@@ -40,4 +40,11 @@ public class TableModel extends AbstractTableModel {
 		fireTableCellUpdated(row, column);
 	}
 
+	public void setData(List<List<String>> dataWithColumnNames) {
+		this.columnNames = dataWithColumnNames.get(0);
+		this.data = dataWithColumnNames;
+		this.data.remove(0);
+
+	}
+
 }

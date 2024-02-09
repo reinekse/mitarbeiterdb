@@ -1,40 +1,43 @@
 package mitarbeiterdb.implementation.view;
 
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
+import java.awt.GridLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class PersonenTextFields extends JPanel {
 	PersonenTextFields() {
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		var size = 20;
-		var lastnameLabel = new JLabel("Nachname: ");
-		var lastnameField = new JTextField(size);
-		add(createInputRow(lastnameLabel, lastnameField));
+		setLayout(new GridLayout(0, 2, 0, 5));
+		var nachnameLabel = new TextFieldLabel("Nachname:");
+		var nachnameField = new JTextField();
+		add(nachnameLabel);
+		add(nachnameField);
 
-		var firstnameLabel = new JLabel("Vorname: ");
-		var firstnameField = new JTextField(size);
-		add(createInputRow(firstnameLabel, firstnameField));
+		var vornameLabel = new TextFieldLabel("Vorname:");
+		var vornameField = new JTextField();
+		add(vornameLabel);
+		add(vornameField);
 
-		var birthdayLabel = new JLabel("Geburtstag: ");
-		var birthdayField = new JTextField(size);
-		add(createInputRow(birthdayLabel, birthdayField));
+		var geburtstagLabel = new TextFieldLabel("Geburtstag:");
+		var geburtstagField = new JTextField();
+		add(geburtstagLabel);
+		add(geburtstagField);
 
-		var departmentLabel = new JLabel("Abteilung: ");
-		var departmentField = new JTextField(size);
-		add(createInputRow(departmentLabel, departmentField));
+		var abteilungLabel = new TextFieldLabel("Abteilung:");
+		var abteilungField = new JTextField();
+		add(abteilungLabel);
+		add(abteilungField);
 
-		var locationIDLabel = new JLabel("Standort-ID: ");
-		var locationIDField = new JTextField(size);
-		add(createInputRow(locationIDLabel, locationIDField));
-	}
+		var standortIDLabel = new TextFieldLabel("Standort-ID:");
+		var standortIDField = new JTextField();
+		add(standortIDLabel);
+		add(standortIDField);
 
-	private JPanel createInputRow(JLabel label, JTextField textField) {
-		JPanel inputRowPanel = new JPanel();
-		inputRowPanel.add(label);
-		inputRowPanel.add(textField);
-		return inputRowPanel;
+		var anstellungstagLabel = new TextFieldLabel("Anstellungstag:");
+		var anstellungstagField = new JTextField();
+		add(anstellungstagLabel);
+		add(anstellungstagField);
+
 	}
 
 }

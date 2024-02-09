@@ -6,6 +6,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 
 import mitarbeiterdb.implementation.controller.TableModel;
 import mitarbeiterdb.implementation.model.Connector;
+import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.Frame;
 
 public class Main {
@@ -15,9 +16,10 @@ public class Main {
 		FlatLightLaf.setup();
 		var db = Connector.getInstance();
 		db.setupDB();
-		var personen = db.sendSQLQuery("SELECT * FROM personen");
+		var sql = new SQLBuilder();
+		var personen = db.sendSQLQuery(sql.selectAll("personen"));
 		var personenTableModel = new TableModel(personen);
-		var standorte = db.sendSQLQuery("SELECT * FROM standorte");
+		var standorte = db.sendSQLQuery(sql.selectAll("standorte"));
 		var standorteTableModel = new TableModel(standorte);
 		new Frame(personenTableModel, standorteTableModel);
 	}
