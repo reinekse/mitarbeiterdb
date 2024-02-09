@@ -13,7 +13,7 @@ public class Tab extends JPanel {
 	Tab(TableModel model) throws SQLException {
 		setLayout(new BorderLayout());
 		var table = new Table(model);
-		add(new SearchPanel(table), BorderLayout.PAGE_START);
+		add(new ControllPanel(table), BorderLayout.PAGE_START);
 
 		add(new JScrollPane(table), BorderLayout.CENTER);
 	}

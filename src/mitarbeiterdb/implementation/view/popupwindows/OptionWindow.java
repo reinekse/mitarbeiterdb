@@ -1,4 +1,4 @@
-package mitarbeiterdb.implementation.view;
+package mitarbeiterdb.implementation.view.popupwindows;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +7,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+import mitarbeiterdb.implementation.view.Table;
+
 public class OptionWindow extends JPopupMenu {
-	OptionWindow(Table table, MouseEvent mouseEvent) {
+	public OptionWindow(Table table, MouseEvent mouseEvent) {
 
 		// Option "Edit"
 		JMenuItem editItem = new JMenuItem("Bearbeiten");

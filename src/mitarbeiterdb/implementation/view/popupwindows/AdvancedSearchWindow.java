@@ -1,10 +1,13 @@
-package mitarbeiterdb.implementation.view;
+package mitarbeiterdb.implementation.view.popupwindows;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+
+import mitarbeiterdb.implementation.view.popupwindows.components.Heading;
+import mitarbeiterdb.implementation.view.popupwindows.components.PersonenInput;
 
 public class AdvancedSearchWindow extends JDialog {
 
@@ -16,7 +19,7 @@ public class AdvancedSearchWindow extends JDialog {
 		add(new Heading("Einträge durchsuchen:"), BorderLayout.PAGE_START);
 
 		// text fields
-		add(new PersonenTextFields(), BorderLayout.CENTER);
+		add(new PersonenInput(), BorderLayout.CENTER);
 		var padding = new JPanel();
 		add(padding, BorderLayout.LINE_START);
 		add(padding, BorderLayout.LINE_END);
@@ -24,6 +27,7 @@ public class AdvancedSearchWindow extends JDialog {
 		// buttons
 		JButton searchButton = new JButton("Suchen");
 		searchButton.addActionListener(e -> {
+			// TODO
 			// String value1 = textField1.getText();
 			// String value2 = textField2.getText();
 			// ...

@@ -1,13 +1,13 @@
-package mitarbeiterdb.implementation.view;
+package mitarbeiterdb.implementation.view.popupwindows.components;
 
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class StandorteTextFields extends JPanel {
+public class StandorteInput extends JPanel {
 
-	StandorteTextFields() {
+	StandorteInput() {
 		setLayout(new GridLayout(0, 2, 0, 5));
 		var strasseLabel = new TextFieldLabel("Straße:");
 		var strasseField = new JTextField();

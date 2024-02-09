@@ -1,4 +1,4 @@
-package mitarbeiterdb.implementation.view;
+package mitarbeiterdb.implementation.view.popupwindows;
 
 import java.sql.SQLException;
 
@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
+import mitarbeiterdb.implementation.view.Table;
 
 public class DeleteWindow {
 

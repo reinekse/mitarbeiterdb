@@ -1,10 +1,14 @@
-package mitarbeiterdb.implementation.view;
+package mitarbeiterdb.implementation.view.popupwindows;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+
+import mitarbeiterdb.implementation.view.Table;
+import mitarbeiterdb.implementation.view.popupwindows.components.Heading;
+import mitarbeiterdb.implementation.view.popupwindows.components.PersonenInput;
 
 public class EditWindow extends JDialog {
 
@@ -19,7 +23,9 @@ public class EditWindow extends JDialog {
 		add(new Heading("Eintrag editieren:"), BorderLayout.PAGE_START);
 
 		// text fields
-		add(new PersonenTextFields(), BorderLayout.CENTER);
+		var inputFields = new PersonenInput();
+		inputFields.setTextAccordingToSelectedRow(table);
+		add(inputFields, BorderLayout.CENTER);
 		var padding = new JPanel();
 		add(padding, BorderLayout.LINE_END);
 

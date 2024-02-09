@@ -6,20 +6,35 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
+import mitarbeiterdb.implementation.view.popupwindows.AdvancedSearchWindow;
+import mitarbeiterdb.implementation.view.popupwindows.InsertWindow;
 
-public class SearchPanel extends JPanel {
+public class ControllPanel extends JPanel {
 
 	private JTextField searchField;
 
-	public SearchPanel(Table table) {
+	public ControllPanel(Table table) {
 		setLayout(new FlowLayout());
 
-		searchField = new JTextField(20);
+		JButton insertButton = new JButton("Neuer Eintrag");
+		insertButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new InsertWindow(table);
+			}
+		});
+		add(insertButton);
+
+		var padding = new JLabel("                                       ");
+		add(padding); // TODO: better solution?
+
+		searchField = new JTextField(10);
 		searchField.setToolTipText("Suche");
 		add(searchField);
 
@@ -36,6 +51,8 @@ public class SearchPanel extends JPanel {
 			}
 		});
 		add(searchButton);
+		padding = new JLabel("   ");
+		add(padding);
 
 		// Press Enter instead of Search Button
 		searchField.addActionListener(new ActionListener() {
@@ -49,11 +66,27 @@ public class SearchPanel extends JPanel {
 		advancedSearchButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new AdvancedSearchWindow(SearchPanel.this);
+				new AdvancedSearchWindow(ControllPanel.this);
 			}
 		});
 		add(advancedSearchButton);
 		setVisible(true);
+
+		add(padding);
+
+		JButton resetButton = new JButton("Zurücksetzen");
+		resetButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					table.update();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		add(resetButton);
 	}
 
 	public void search(Table table) throws SQLException {

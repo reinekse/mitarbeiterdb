@@ -9,11 +9,13 @@ import javax.swing.JTable;
 
 import mitarbeiterdb.implementation.controller.TableModel;
 import mitarbeiterdb.implementation.model.Connector;
+import mitarbeiterdb.implementation.view.popupwindows.OptionWindow;
 
 public class Table extends JTable {
 
 	public Table(TableModel model) {
 		super(model);
+		getColumnModel().getColumn(0).setPreferredWidth(10);
 
 		addMouseListener(new MouseAdapter() {
 			@Override
