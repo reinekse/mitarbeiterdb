@@ -1,30 +1,27 @@
 package mitarbeiterdb;
 
-import mitarbeiterdb.implementation.Connector;
-import mitarbeiterdb.implementation.SQLBuilder;
+import java.sql.SQLException;
+
+import com.formdev.flatlaf.FlatLightLaf;
+
+import mitarbeiterdb.implementation.controller.TableModel;
+import mitarbeiterdb.implementation.model.Connector;
+import mitarbeiterdb.implementation.model.SQLBuilder;
+import mitarbeiterdb.implementation.view.Frame;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 
-		// Test Database connection
-		var dbTest = TestConnection.getInstance();
-		try {
-			dbTest.readDataBase();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		FlatLightLaf.setup();
 		var db = Connector.getInstance();
+		db.setupDB();
 		var sql = new SQLBuilder();
-		try {
-			db.sendSQLQuery("select * from personendaten");
-			System.out.println(sql.setupDB());
-			db.sendSQLExpression(sql.setupDB());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		var personen = db.sendSQLQuery(sql.selectAll("personen"));
+		var personenTableModel = new TableModel(personen);
+		var standorte = db.sendSQLQuery(sql.selectAll("standorte"));
+		var standorteTableModel = new TableModel(standorte);
+		new Frame(personenTableModel, standorteTableModel);
 	}
 
 }
