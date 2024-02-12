@@ -15,35 +15,35 @@ public class PersonenInput_OLD extends JPanel {
 
 	PersonenInput_OLD() {
 		setLayout(new GridLayout(0, 2, 0, 5));
-		var nachnameLabel = new TextFieldLabel("Nachname:");
+		var nachnameLabel = new InputLabel("Nachname:");
 		nachnameField = new JTextField();
 		add(nachnameLabel);
 		add(nachnameField);
 
-		var vornameLabel = new TextFieldLabel("Vorname:");
+		var vornameLabel = new InputLabel("Vorname:");
 		vornameField = new JTextField();
 		add(vornameLabel);
 		add(vornameField);
 
 // TODO accept only YYYY-MM-DD input
-		var geburtstagLabel = new TextFieldLabel("Geburtstag:");
+		var geburtstagLabel = new InputLabel("Geburtstag:");
 		geburtstagField = new JTextField();
 		add(geburtstagLabel);
 		add(geburtstagField);
 
-		var abteilungLabel = new TextFieldLabel("Abteilung:");
+		var abteilungLabel = new InputLabel("Abteilung:");
 		abteilungField = new JTextField();
 		add(abteilungLabel);
 		add(abteilungField);
 
 // TODO accept only existing IDs (foreign key)
-		var standortIDLabel = new TextFieldLabel("Standort-ID:");
+		var standortIDLabel = new InputLabel("Standort-ID:");
 		standortIDField = new JTextField();
 		add(standortIDLabel);
 		add(standortIDField);
 
 		// TODO accept only YYYY-MM-DD input
-		var anstellungstagLabel = new TextFieldLabel("Anstellungstag:");
+		var anstellungstagLabel = new InputLabel("Anstellungstag:");
 		anstellungstagField = new JTextField();
 		add(anstellungstagLabel);
 		add(anstellungstagField);

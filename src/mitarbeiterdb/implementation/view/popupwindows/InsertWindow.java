@@ -12,7 +12,7 @@ import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.popupwindows.subcomponents.Heading;
-import mitarbeiterdb.implementation.view.popupwindows.subcomponents.PersonenInput;
+import mitarbeiterdb.implementation.view.popupwindows.subcomponents.InputPanel;
 
 public class InsertWindow extends JDialog {
 
@@ -24,7 +24,7 @@ public class InsertWindow extends JDialog {
 		add(new Heading("Neuen Eintrag anlegen:"), BorderLayout.PAGE_START);
 
 		// text fields
-		var inputFields = new PersonenInput(table.getType());
+		var inputFields = new InputPanel(table.getType());
 		add(inputFields, BorderLayout.CENTER);
 
 		// buttons

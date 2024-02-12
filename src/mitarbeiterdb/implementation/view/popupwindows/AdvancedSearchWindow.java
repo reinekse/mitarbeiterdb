@@ -12,7 +12,7 @@ import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.popupwindows.subcomponents.Heading;
-import mitarbeiterdb.implementation.view.popupwindows.subcomponents.PersonenInput;
+import mitarbeiterdb.implementation.view.popupwindows.subcomponents.InputPanel;
 
 public class AdvancedSearchWindow extends JDialog {
 
@@ -24,7 +24,7 @@ public class AdvancedSearchWindow extends JDialog {
 		add(new Heading("Einträge durchsuchen:"), BorderLayout.PAGE_START);
 
 		// text fields
-		var inputFields = new PersonenInput(table.getType());
+		var inputFields = new InputPanel(table.getType());
 		add(inputFields, BorderLayout.CENTER);
 
 		// buttons

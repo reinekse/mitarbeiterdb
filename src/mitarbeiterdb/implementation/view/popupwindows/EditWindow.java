@@ -12,7 +12,7 @@ import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.popupwindows.subcomponents.Heading;
-import mitarbeiterdb.implementation.view.popupwindows.subcomponents.PersonenInput;
+import mitarbeiterdb.implementation.view.popupwindows.subcomponents.InputPanel;
 
 public class EditWindow extends JDialog {
 
@@ -25,7 +25,7 @@ public class EditWindow extends JDialog {
 		add(new Heading("Eintrag editieren:"), BorderLayout.PAGE_START);
 
 		// text fields
-		var inputFields = new PersonenInput(table.getType());
+		var inputFields = new InputPanel(table.getType());
 		inputFields.setTextAccordingToSelectedRow(table);
 		add(inputFields, BorderLayout.CENTER);
 

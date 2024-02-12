@@ -10,11 +10,11 @@ import javax.swing.JTextField;
 
 import mitarbeiterdb.implementation.view.Table;
 
-public class PersonenInput extends JPanel {
+public class InputPanel extends JPanel {
 	private ArrayList<JTextField> fields;
 	private String[] labels;
 
-	public PersonenInput(String tableType) {
+	public InputPanel(String tableType) {
 		if (tableType.equals("personen")) {
 
 			labels = "Nachname, Vorname, Geburtstag, Abteilung, Standort-ID, Anstellungstag ".split(",");
