@@ -2,12 +2,13 @@ package mitarbeiterdb.implementation.view.popupwindows;
 
 import java.awt.BorderLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
-import mitarbeiterdb.implementation.view.popupwindows.components.Heading;
-import mitarbeiterdb.implementation.view.popupwindows.components.PersonenInput;
+import mitarbeiterdb.implementation.view.popupwindows.subcomponents.Heading;
+import mitarbeiterdb.implementation.view.popupwindows.subcomponents.PersonenInput;
 
 public class AdvancedSearchWindow extends JDialog {
 
@@ -20,9 +21,6 @@ public class AdvancedSearchWindow extends JDialog {
 
 		// text fields
 		add(new PersonenInput(), BorderLayout.CENTER);
-		var padding = new JPanel();
-		add(padding, BorderLayout.LINE_START);
-		add(padding, BorderLayout.LINE_END);
 
 		// buttons
 		JButton searchButton = new JButton("Suchen");
@@ -44,6 +42,7 @@ public class AdvancedSearchWindow extends JDialog {
 		var buttonPanel = new JPanel();
 		buttonPanel.add(searchButton);
 		buttonPanel.add(cancelButton);
+		buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		add(buttonPanel, BorderLayout.PAGE_END);
 		setLocationRelativeTo(parent);
 		pack();

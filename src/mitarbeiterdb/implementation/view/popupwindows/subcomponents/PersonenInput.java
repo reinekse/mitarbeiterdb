@@ -1,8 +1,9 @@
-package mitarbeiterdb.implementation.view.popupwindows.components;
+package mitarbeiterdb.implementation.view.popupwindows.subcomponents;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -15,6 +16,7 @@ public class PersonenInput extends JPanel {
 	public PersonenInput() {
 		String labels[] = { "Nachname:", "Vorname:", "Geburtstag:", "Abteilung:", "Standort-ID:", "Anstellungstag:" };
 		setLayout(new GridLayout(0, 2, 0, 5));
+		setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		fields = new ArrayList<JTextField>();
 		for (String label : labels) {
 			add(new JLabel(label));

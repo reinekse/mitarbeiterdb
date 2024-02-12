@@ -1,4 +1,4 @@
-package mitarbeiterdb.implementation.view.popupwindows.components;
+package mitarbeiterdb.implementation.view.popupwindows.subcomponents;
 
 import javax.swing.JLabel;
 

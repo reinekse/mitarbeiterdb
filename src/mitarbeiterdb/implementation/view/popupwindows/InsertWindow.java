@@ -3,14 +3,15 @@ package mitarbeiterdb.implementation.view.popupwindows;
 import java.awt.BorderLayout;
 import java.sql.SQLException;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
 import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.view.Table;
-import mitarbeiterdb.implementation.view.popupwindows.components.Heading;
-import mitarbeiterdb.implementation.view.popupwindows.components.PersonenInput;
+import mitarbeiterdb.implementation.view.popupwindows.subcomponents.Heading;
+import mitarbeiterdb.implementation.view.popupwindows.subcomponents.PersonenInput;
 
 public class InsertWindow extends JDialog {
 
@@ -24,9 +25,6 @@ public class InsertWindow extends JDialog {
 		// text fields
 		var inputFields = new PersonenInput();
 		add(inputFields, BorderLayout.CENTER);
-		var padding = new JPanel();
-		add(padding, BorderLayout.LINE_START);
-		add(padding, BorderLayout.LINE_END);
 
 		// buttons
 		JButton insertButton = new JButton("Hinzufügen");
@@ -53,6 +51,7 @@ public class InsertWindow extends JDialog {
 		var buttonPanel = new JPanel();
 		buttonPanel.add(insertButton);
 		buttonPanel.add(cancelButton);
+		buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		add(buttonPanel, BorderLayout.PAGE_END);
 		setLocationRelativeTo(table);
 		pack();

@@ -1,12 +1,13 @@
 package mitarbeiterdb.implementation.view;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -20,20 +21,18 @@ public class ControllPanel extends JPanel {
 	private JTextField searchField;
 
 	public ControllPanel(Table table) {
-		setLayout(new FlowLayout());
+		setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
 
 		JButton insertButton = new JButton("Neuer Eintrag");
+		insertButton.setBackground(new Color(240, 248, 255));
 		insertButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new InsertWindow(table);
 			}
 		});
+
 		add(insertButton);
-
-		var padding = new JLabel("                                       ");
-		add(padding); // TODO: better solution?
-
 		searchField = new JTextField(10);
 		searchField.setToolTipText("Suche");
 		add(searchField);
@@ -45,14 +44,14 @@ public class ControllPanel extends JPanel {
 				try {
 					search(table);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
-		add(searchButton);
-		padding = new JLabel("   ");
-		add(padding);
+		var searchPanel = new JPanel();
+		searchPanel.add(searchField);
+		searchPanel.add(searchButton);
+		add(searchPanel);
 
 		// Press Enter instead of Search Button
 		searchField.addActionListener(new ActionListener() {
@@ -72,8 +71,6 @@ public class ControllPanel extends JPanel {
 		add(advancedSearchButton);
 		setVisible(true);
 
-		add(padding);
-
 		JButton resetButton = new JButton("Zurücksetzen");
 		resetButton.addActionListener(new ActionListener() {
 			@Override
@@ -81,12 +78,12 @@ public class ControllPanel extends JPanel {
 				try {
 					table.update();
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
 		add(resetButton);
+		setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 	}
 
 	public void search(Table table) throws SQLException {

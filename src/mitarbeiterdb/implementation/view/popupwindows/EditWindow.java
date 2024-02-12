@@ -2,13 +2,14 @@ package mitarbeiterdb.implementation.view.popupwindows;
 
 import java.awt.BorderLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
 import mitarbeiterdb.implementation.view.Table;
-import mitarbeiterdb.implementation.view.popupwindows.components.Heading;
-import mitarbeiterdb.implementation.view.popupwindows.components.PersonenInput;
+import mitarbeiterdb.implementation.view.popupwindows.subcomponents.Heading;
+import mitarbeiterdb.implementation.view.popupwindows.subcomponents.PersonenInput;
 
 public class EditWindow extends JDialog {
 
@@ -26,8 +27,6 @@ public class EditWindow extends JDialog {
 		var inputFields = new PersonenInput();
 		inputFields.setTextAccordingToSelectedRow(table);
 		add(inputFields, BorderLayout.CENTER);
-		var padding = new JPanel();
-		add(padding, BorderLayout.LINE_END);
 
 		// buttons
 		JButton saveButton = new JButton("Speichern");
@@ -54,6 +53,7 @@ public class EditWindow extends JDialog {
 		buttonPanel.add(saveButton);
 		buttonPanel.add(resetButton);
 		buttonPanel.add(cancelButton);
+		buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		add(buttonPanel, BorderLayout.PAGE_END);
 
 		setLocationRelativeTo(table);

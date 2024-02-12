@@ -3,6 +3,7 @@ package mitarbeiterdb.implementation.view;
 import java.awt.BorderLayout;
 import java.sql.SQLException;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -14,8 +15,9 @@ public class Tab extends JPanel {
 		setLayout(new BorderLayout());
 		var table = new Table(model);
 		add(new ControllPanel(table), BorderLayout.PAGE_START);
-
-		add(new JScrollPane(table), BorderLayout.CENTER);
+		var scrollTable = new JScrollPane(table);
+		scrollTable.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
+		add(scrollTable, BorderLayout.CENTER);
 	}
 
 }
