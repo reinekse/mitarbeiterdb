@@ -32,7 +32,7 @@ public class EditWindow extends JDialog {
 		// buttons
 		JButton saveButton = new JButton("Speichern");
 		saveButton.addActionListener(e -> {
-			var sql = new SQLBuilder().update("personen", inputFields.getInputString(), table.getSelectedID());
+			var sql = new SQLBuilder().update(table.getType(), inputFields.getInputString(), table.getSelectedID());
 			try {
 				Connector.getInstance().sendSQLExpression(sql);
 				table.update();

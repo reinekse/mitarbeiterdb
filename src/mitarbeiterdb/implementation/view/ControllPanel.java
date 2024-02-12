@@ -77,6 +77,7 @@ public class ControllPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					table.update();
+					searchField.setText("");
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
