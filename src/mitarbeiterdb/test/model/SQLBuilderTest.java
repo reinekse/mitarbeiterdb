@@ -17,7 +17,7 @@ public class SQLBuilderTest {
 
 	@Test
 	public void insert_validInput_returnSQLStatement() {
-		var actual = sqlBuilder.insert("table", "col1, col2, col3", "val1, val2, val3");
+		var actual = sqlBuilder.insertInColumns("table", "col1, col2, col3", "val1, val2, val3");
 		var expected = "INSERT INTO table (col1, col2, col3) VALUES (val1, val2, val3);";
 		assertEquals(expected, actual);
 
@@ -25,7 +25,7 @@ public class SQLBuilderTest {
 
 	@Test
 	public void update_validInput_returnSQLStatement() {
-		var actual = sqlBuilder.update("table", "col1,col2,col3", "val1,val2,val3", "col4 = 'foo'");
+		var actual = sqlBuilder.updateByCondition("table", "col1,col2,col3", "val1,val2,val3", "col4 = 'foo'");
 		var expected = "UPDATE table SET col1 = val1, col2 = val2, col3 = val3 WHERE col4 = 'foo';";
 		assertEquals(expected, actual);
 

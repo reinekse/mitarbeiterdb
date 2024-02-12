@@ -9,6 +9,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 
 import mitarbeiterdb.implementation.model.Connector;
+import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.popupwindows.subcomponents.Heading;
 import mitarbeiterdb.implementation.view.popupwindows.subcomponents.PersonenInput;
@@ -30,11 +31,7 @@ public class InsertWindow extends JDialog {
 		JButton insertButton = new JButton("Hinzufügen");
 		insertButton.addActionListener(e -> {
 			// TODO move code to better place
-			var inputString = inputFields.getInputString();
-
-			var sql = "INSERT INTO "
-					+ "personen (name, vorname, geburtstag, abteilung, standort_id, anstellungstag) VALUES("
-					+ inputString + ");";
+			var sql = new SQLBuilder().insert("personen", inputFields.getInputString());
 			try {
 				Connector.getInstance().sendSQLExpression(sql);
 				table.update();

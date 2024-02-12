@@ -1,18 +1,22 @@
 package mitarbeiterdb.implementation.view.popupwindows;
 
 import java.awt.BorderLayout;
+import java.sql.SQLException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
+import mitarbeiterdb.implementation.model.Connector;
+import mitarbeiterdb.implementation.model.SQLBuilder;
+import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.popupwindows.subcomponents.Heading;
 import mitarbeiterdb.implementation.view.popupwindows.subcomponents.PersonenInput;
 
 public class AdvancedSearchWindow extends JDialog {
 
-	public AdvancedSearchWindow(JPanel parent) {
+	public AdvancedSearchWindow(Table table) {
 		setTitle("Mitarbeiter Datenbank");
 		setLayout(new BorderLayout());
 
@@ -20,20 +24,21 @@ public class AdvancedSearchWindow extends JDialog {
 		add(new Heading("Einträge durchsuchen:"), BorderLayout.PAGE_START);
 
 		// text fields
-		add(new PersonenInput(), BorderLayout.CENTER);
+		var inputFields = new PersonenInput();
+		add(inputFields, BorderLayout.CENTER);
 
 		// buttons
 		JButton searchButton = new JButton("Suchen");
 		searchButton.addActionListener(e -> {
-			// TODO
-			// String value1 = textField1.getText();
-			// String value2 = textField2.getText();
-			// ...
+			var sql = new SQLBuilder().advancedSearch("personen", inputFields.getInputString());
+			try {
+				var selection = Connector.getInstance().sendSQLQuery(sql);
+				table.update(selection);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 
-			// Update der JTable mit den bearbeiteten Werten hier durchführen
-			// ...
-
-			dispose(); // Bearbeiten-Fenster schließen
+			dispose();
 		});
 		JButton cancelButton = new JButton("Abbrechen");
 		cancelButton.addActionListener(e -> {
@@ -44,7 +49,7 @@ public class AdvancedSearchWindow extends JDialog {
 		buttonPanel.add(cancelButton);
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		add(buttonPanel, BorderLayout.PAGE_END);
-		setLocationRelativeTo(parent);
+		setLocationRelativeTo(table);
 		pack();
 		setVisible(true);
 	}

@@ -65,13 +65,13 @@ public class ControllPanel extends JPanel {
 		advancedSearchButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new AdvancedSearchWindow(ControllPanel.this);
+				new AdvancedSearchWindow(table);
 			}
 		});
 		add(advancedSearchButton);
 		setVisible(true);
 
-		JButton resetButton = new JButton("Zurücksetzen");
+		JButton resetButton = new JButton("Suche zurücksetzen");
 		resetButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

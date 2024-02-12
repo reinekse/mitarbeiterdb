@@ -1,19 +1,20 @@
 package mitarbeiterdb.implementation.view.popupwindows;
 
 import java.awt.BorderLayout;
+import java.sql.SQLException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
+import mitarbeiterdb.implementation.model.Connector;
+import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.popupwindows.subcomponents.Heading;
 import mitarbeiterdb.implementation.view.popupwindows.subcomponents.PersonenInput;
 
 public class EditWindow extends JDialog {
-
-	private int rowIndex;
 
 	public EditWindow(Table table) {
 
@@ -31,19 +32,20 @@ public class EditWindow extends JDialog {
 		// buttons
 		JButton saveButton = new JButton("Speichern");
 		saveButton.addActionListener(e -> {
-			System.out.println("Editiere Zeile" + table.getSelectedRow());
-			// String value1 = textField1.getText();
-			// String value2 = textField2.getText();
-			// ...
-
-			// Update der JTable mit den bearbeiteten Werten hier durchführen
-			// ...
+			var sql = new SQLBuilder().update("personen", inputFields.getInputString(), table.getSelectedID());
+			try {
+				Connector.getInstance().sendSQLExpression(sql);
+				table.update();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 
 			dispose();
 		});
+
 		JButton resetButton = new JButton("Zurücksetzen");
 		resetButton.addActionListener(e -> {
-			dispose();
+			inputFields.setTextAccordingToSelectedRow(table);
 		});
 		JButton cancelButton = new JButton("Abbrechen");
 		cancelButton.addActionListener(e -> {
