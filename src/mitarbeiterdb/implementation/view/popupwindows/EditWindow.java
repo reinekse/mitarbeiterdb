@@ -25,7 +25,7 @@ public class EditWindow extends JDialog {
 		add(new Heading("Eintrag editieren:"), BorderLayout.PAGE_START);
 
 		// text fields
-		var inputFields = new PersonenInput();
+		var inputFields = new PersonenInput(table.getType());
 		inputFields.setTextAccordingToSelectedRow(table);
 		add(inputFields, BorderLayout.CENTER);
 

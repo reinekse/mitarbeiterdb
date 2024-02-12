@@ -9,6 +9,7 @@ import javax.swing.JTable;
 
 import mitarbeiterdb.implementation.controller.TableModel;
 import mitarbeiterdb.implementation.model.Connector;
+import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.popupwindows.OptionWindow;
 
 public class Table extends JTable {
@@ -32,7 +33,8 @@ public class Table extends JTable {
 
 	public void update() throws SQLException {
 		TableModel tableModel = (TableModel) getModel();
-		List<List<String>> data = Connector.getInstance().sendSQLQuery("SELECT * FROM personen");
+		var sql = new SQLBuilder().selectAll(getType());
+		List<List<String>> data = Connector.getInstance().sendSQLQuery(sql);
 		tableModel.setData(data);
 		tableModel.fireTableDataChanged();
 	}
@@ -41,6 +43,13 @@ public class Table extends JTable {
 		TableModel tableModel = (TableModel) getModel();
 		tableModel.setData(data);
 		tableModel.fireTableDataChanged();
+	}
+
+	public String getType() {
+		TableModel tableModel = (TableModel) getModel();
+		System.out.println(tableModel.getType());
+		return tableModel.getType();
+
 	}
 
 }

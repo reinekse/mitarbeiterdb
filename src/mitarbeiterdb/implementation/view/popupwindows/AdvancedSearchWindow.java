@@ -24,14 +24,14 @@ public class AdvancedSearchWindow extends JDialog {
 		add(new Heading("Einträge durchsuchen:"), BorderLayout.PAGE_START);
 
 		// text fields
-		var inputFields = new PersonenInput();
+		var inputFields = new PersonenInput(table.getType());
 		add(inputFields, BorderLayout.CENTER);
 
 		// buttons
 		JButton searchButton = new JButton("Suchen");
 		searchButton.addActionListener(e -> {
-			var sql = new SQLBuilder().advancedSearch("personen", inputFields.getInputString());
 			try {
+				var sql = new SQLBuilder().advancedSearch(table.getType(), inputFields.getInputString());
 				var selection = Connector.getInstance().sendSQLQuery(sql);
 				table.update(selection);
 			} catch (SQLException e1) {

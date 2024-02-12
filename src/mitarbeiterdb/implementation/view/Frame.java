@@ -16,7 +16,7 @@ public class Frame extends JFrame {
 		tabbedPane.addTab("Personen", null, new Tab(personenTableModel), "");
 		tabbedPane.addTab("Standorte", null, new Tab(standorteTableModel), "");
 		add(tabbedPane);
-		setSize(800, 500);
+		setSize(800, 400);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);
 	}

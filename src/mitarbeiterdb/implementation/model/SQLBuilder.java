@@ -20,10 +20,10 @@ public class SQLBuilder {
 	public String search(String table, String searchValue) {
 		var sql = "SELECT * FROM " + table;
 		if (table == "personen") {
-			sql += " WHERE CONCAT_WS(' ', id, " + personenColumns + ") LIKE '%" + searchValue + "%'";
+			sql += "  WHERE CONCAT_WS(' ', id, " + personenColumns + ") LIKE '%" + searchValue + "%'";
 		}
 		if (table == "standorte") {
-			sql += "WHERE CONCAT_WS(' ', id, " + standorteColumns + ") LIKE '%" + searchValue + "%'";
+			sql += " WHERE CONCAT_WS(' ', id, " + standorteColumns + ") LIKE '%" + searchValue + "%'";
 		}
 		return sql + ";";
 	}

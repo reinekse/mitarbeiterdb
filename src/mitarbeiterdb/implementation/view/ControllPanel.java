@@ -33,7 +33,7 @@ public class ControllPanel extends JPanel {
 		});
 
 		add(insertButton);
-		searchField = new JTextField(10);
+		searchField = new JTextField(5);
 		searchField.setToolTipText("Suche");
 		add(searchField);
 
@@ -87,7 +87,7 @@ public class ControllPanel extends JPanel {
 	}
 
 	public void search(Table table) throws SQLException {
-		var sql = new SQLBuilder().search("personen", searchField.getText());
+		var sql = new SQLBuilder().search(table.getType(), searchField.getText());
 		var selection = Connector.getInstance().sendSQLQuery(sql);
 		table.update(selection);
 	}

@@ -24,15 +24,16 @@ public class InsertWindow extends JDialog {
 		add(new Heading("Neuen Eintrag anlegen:"), BorderLayout.PAGE_START);
 
 		// text fields
-		var inputFields = new PersonenInput();
+		var inputFields = new PersonenInput(table.getType());
 		add(inputFields, BorderLayout.CENTER);
 
 		// buttons
 		JButton insertButton = new JButton("Hinzufügen");
 		insertButton.addActionListener(e -> {
 			// TODO move code to better place
-			var sql = new SQLBuilder().insert("personen", inputFields.getInputString());
 			try {
+				var sql = new SQLBuilder().insert(table.getType(), inputFields.getInputString());
+
 				Connector.getInstance().sendSQLExpression(sql);
 				table.update();
 			} catch (SQLException e1) {

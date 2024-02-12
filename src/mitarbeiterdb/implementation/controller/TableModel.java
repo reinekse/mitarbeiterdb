@@ -7,9 +7,16 @@ import javax.swing.table.AbstractTableModel;
 public class TableModel extends AbstractTableModel {
 	private List<List<String>> data;
 	private List<String> columnNames;
+	private String type = "test";
 
 	public TableModel(List<List<String>> dataWithColumnNames) {
 		this.columnNames = dataWithColumnNames.get(0);
+		if (columnNames.get(1).equals("name")) {
+			this.type = "personen";
+		}
+		if (columnNames.get(1).equals("strasse")) {
+			this.type = "standorte";
+		}
 		this.data = dataWithColumnNames;
 		this.data.remove(0);
 	}
@@ -45,6 +52,10 @@ public class TableModel extends AbstractTableModel {
 		this.data = dataWithColumnNames;
 		this.data.remove(0);
 
+	}
+
+	public String getType() {
+		return type;
 	}
 
 }

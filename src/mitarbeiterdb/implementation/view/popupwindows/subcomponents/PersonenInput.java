@@ -12,9 +12,17 @@ import mitarbeiterdb.implementation.view.Table;
 
 public class PersonenInput extends JPanel {
 	private ArrayList<JTextField> fields;
+	private String[] labels;
 
-	public PersonenInput() {
-		String labels[] = { "Nachname:", "Vorname:", "Geburtstag:", "Abteilung:", "Standort-ID:", "Anstellungstag:" };
+	public PersonenInput(String tableType) {
+		if (tableType.equals("personen")) {
+
+			labels = "Nachname, Vorname, Geburtstag, Abteilung, Standort-ID, Anstellungstag ".split(",");
+		}
+		if (tableType.equals("standorte")) {
+			labels = "Straße, Hausnummer, PLZ, Ort".split(",");
+		}
+
 		setLayout(new GridLayout(0, 2, 0, 5));
 		setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		fields = new ArrayList<JTextField>();

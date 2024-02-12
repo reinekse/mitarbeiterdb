@@ -24,9 +24,8 @@ public class DeleteWindow {
 
 	}
 
-	// TODO move to Model or Connector folder?
 	public void deleteSelectedRow(Table table) throws SQLException {
-		var sql = new SQLBuilder().delete("personen", table.getSelectedID());
+		var sql = new SQLBuilder().delete(table.getType(), table.getSelectedID());
 		Connector.getInstance().sendSQLExpression(sql);
 		table.update();
 	}
