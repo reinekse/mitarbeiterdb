@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import mitarbeiterdb.contract.view.ITable;
 import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.popupwindows.AdvancedSearchWindow;
@@ -87,7 +88,7 @@ public class ControllPanel extends JPanel {
 		setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 	}
 
-	public void search(Table table) throws SQLException {
+	public void search(ITable table) throws SQLException {
 		var sql = new SQLBuilder().search(table.getType(), searchField.getText());
 		var selection = Connector.getInstance().sendSQLQuery(sql);
 		table.update(selection);

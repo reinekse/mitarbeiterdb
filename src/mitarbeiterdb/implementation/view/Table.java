@@ -7,12 +7,13 @@ import java.util.List;
 
 import javax.swing.JTable;
 
+import mitarbeiterdb.contract.view.ITable;
 import mitarbeiterdb.implementation.controller.TableModel;
 import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.popupwindows.OptionWindow;
 
-public class Table extends JTable {
+public class Table extends JTable implements ITable {
 
 	public Table(TableModel model) {
 		super(model);
@@ -27,10 +28,12 @@ public class Table extends JTable {
 
 	}
 
+	@Override
 	public String getSelectedID() {
 		return getValueAt(getSelectedRow(), 0).toString();
 	}
 
+	@Override
 	public void update() throws SQLException {
 		TableModel tableModel = (TableModel) getModel();
 		var sql = new SQLBuilder().selectAll(getType());
@@ -39,12 +42,14 @@ public class Table extends JTable {
 		tableModel.fireTableDataChanged();
 	}
 
+	@Override
 	public void update(List<List<String>> data) throws SQLException {
 		TableModel tableModel = (TableModel) getModel();
 		tableModel.setData(data);
 		tableModel.fireTableDataChanged();
 	}
 
+	@Override
 	public String getType() {
 		TableModel tableModel = (TableModel) getModel();
 		System.out.println(tableModel.getType());

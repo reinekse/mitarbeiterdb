@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+import mitarbeiterdb.contract.view.ITable;
 import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.Table;
@@ -24,7 +25,7 @@ public class DeleteWindow {
 
 	}
 
-	public void deleteSelectedRow(Table table) throws SQLException {
+	public void deleteSelectedRow(ITable table) throws SQLException {
 		var sql = new SQLBuilder().delete(table.getType(), table.getSelectedID());
 		Connector.getInstance().sendSQLExpression(sql);
 		table.update();
