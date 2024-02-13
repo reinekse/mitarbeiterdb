@@ -27,7 +27,7 @@ public class DeleteWindow {
 
 	public void deleteSelectedRow(ITable table) throws SQLException {
 		var sql = new SQLBuilder().delete(table.getType(), table.getSelectedID());
-		Connector.getInstance().sendSQLExpression(sql);
+		Connector.getInstance().sendSQLQuery(sql);
 		table.update();
 	}
 

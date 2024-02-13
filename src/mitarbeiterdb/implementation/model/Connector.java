@@ -29,7 +29,7 @@ public class Connector implements IConnector {
 		return instance;
 	}
 
-	// to set uo connection for unit tests
+	// to set up connection for unit tests
 	public static Connector getInstance(String url) throws SQLException {
 		if (instance == null) {
 			instance = new Connector(url);
@@ -66,28 +66,16 @@ public class Connector implements IConnector {
 	}
 
 	@Override
-	public void sendSQLExpression(String sql) throws SQLException {
-		try {
-			System.out.println("\n\n" + sql + "\n");
-			statement = connection.createStatement();
-			statement.execute(sql);
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			close();
-		}
-
-	}
-
-	@Override
 	public List<List<String>> sendSQLQuery(String sql) throws SQLException {
 		try {
 			System.out.println("\n\n" + sql + "\n");
 			statement = connection.createStatement();
-			resultSet = statement.executeQuery(sql);
-
-			return convertToList(resultSet);
+			var result = statement.execute(sql);
+			if (result) {
+				return convertToList(statement.getResultSet());
+			} else {
+				return null;
+			}
 
 		} catch (Exception e) {
 			throw e;

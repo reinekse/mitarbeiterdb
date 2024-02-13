@@ -33,7 +33,6 @@ public class Table extends JTable implements ITable {
 		return getValueAt(getSelectedRow(), 0).toString();
 	}
 
-	@Override
 	public void update() throws SQLException {
 		TableModel tableModel = (TableModel) getModel();
 		var sql = new SQLBuilder().selectAll(getType());
@@ -42,7 +41,6 @@ public class Table extends JTable implements ITable {
 		tableModel.fireTableDataChanged();
 	}
 
-	@Override
 	public void update(List<List<String>> data) throws SQLException {
 		TableModel tableModel = (TableModel) getModel();
 		tableModel.setData(data);

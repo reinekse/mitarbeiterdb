@@ -2,7 +2,7 @@ package mitarbeiterdb.implementation.view.popupwindows;
 
 import javax.swing.JButton;
 
-import mitarbeiterdb.implementation.controller.InsertObserver;
+import mitarbeiterdb.implementation.controller.Observer;
 import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.popupwindows.subcomponents.CancelButton;
 
@@ -16,12 +16,8 @@ public class InsertWindow extends PopupWindow {
 	@Override
 	public void addButtonsToButtonPanel() {
 		JButton insertButton = new JButton("Hinzufügen");
-		insertButton.addActionListener(new InsertObserver(this));
+		insertButton.addActionListener(new Observer(this));
 
-		JButton cancelButton = new JButton("Abbrechen");
-		cancelButton.addActionListener(e -> {
-			dispose();
-		});
 		buttonPanel.add(insertButton);
 		buttonPanel.add(new CancelButton(this));
 		// buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));

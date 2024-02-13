@@ -39,7 +39,7 @@ public class IntegrationTest {
 
 	@Test
 	public void updateColumnsByCondition() throws SQLException {
-		db.sendSQLExpression(sql.updateByCondition("personen", "name, vorname", "'Müller', 'Fenja'", "id = 4"));
+		db.sendSQLQuery(sql.updateByCondition("personen", "name, vorname", "'Müller', 'Fenja'", "id = 4"));
 		var actual = db.sendSQLQuery(sql.select("personen", "name, vorname", "id = 4")).toString();
 		var expected = "[[name, vorname], [Müller, Fenja]]";
 		assertEquals(expected, actual);
@@ -48,7 +48,7 @@ public class IntegrationTest {
 	@Test
 	public void insert_increasesRowCount() throws SQLException {
 		var initialNumberOfRows = db.getNumberOfRows("standorte");
-		db.sendSQLExpression(sql.insertInColumns("standorte", "strasse, hausnummer", "'Bienenweg', '15'"));
+		db.sendSQLQuery(sql.insertInColumns("standorte", "strasse, hausnummer", "'Bienenweg', '15'"));
 		var actual = db.getNumberOfRows("standorte");
 		var expected = initialNumberOfRows + 1;
 		assertEquals(expected, actual);
@@ -57,7 +57,7 @@ public class IntegrationTest {
 	@Test
 	public void deleteRows_decreasesRowCount() throws SQLException {
 		var initialNumberOfRows = db.getNumberOfRows("personen");
-		db.sendSQLExpression(sql.deleteRows("personen", "id = 2"));
+		db.sendSQLQuery(sql.deleteRows("personen", "id = 2"));
 		var actual = db.getNumberOfRows("personen");
 		var expected = initialNumberOfRows - 1;
 		assertEquals(expected, actual);

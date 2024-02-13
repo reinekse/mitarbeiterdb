@@ -1,11 +1,8 @@
 package mitarbeiterdb.implementation.view.popupwindows;
 
-import java.sql.SQLException;
-
 import javax.swing.JButton;
 
-import mitarbeiterdb.implementation.model.Connector;
-import mitarbeiterdb.implementation.model.SQLBuilder;
+import mitarbeiterdb.implementation.controller.Observer;
 import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.popupwindows.subcomponents.CancelButton;
 
@@ -20,17 +17,7 @@ public class EditWindow extends PopupWindow {
 	@Override
 	public void addButtonsToButtonPanel() {
 		JButton saveButton = new JButton("Speichern");
-		saveButton.addActionListener(e -> {
-			var sql = new SQLBuilder().update(table.getType(), inputPanel.getInputString(), table.getSelectedID());
-			try {
-				Connector.getInstance().sendSQLExpression(sql);
-				table.update();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-
-			dispose();
-		});
+		saveButton.addActionListener(new Observer(this));
 
 		JButton resetButton = new JButton("Zurücksetzen");
 		resetButton.addActionListener(e -> {
