@@ -1,38 +1,27 @@
 package mitarbeiterdb.implementation.view.popupwindows;
 
-import java.awt.BorderLayout;
 import java.sql.SQLException;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
 
 import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.Table;
-import mitarbeiterdb.implementation.view.popupwindows.subcomponents.Heading;
-import mitarbeiterdb.implementation.view.popupwindows.subcomponents.InputPanel;
+import mitarbeiterdb.implementation.view.popupwindows.subcomponents.CancelButton;
 
-public class EditWindow extends JDialog {
+public class EditWindow extends PopupWindow {
 
 	public EditWindow(Table table) {
+		super(table);
+		inputPanel.setTextAccordingToSelectedRow(table);
+		heading.setText("Eintrag editieren: ");
+	}
 
-		setTitle("Mitarbeiter Datenbank");
-		setLayout(new BorderLayout());
-
-		// heading
-		add(new Heading("Eintrag editieren:"), BorderLayout.PAGE_START);
-
-		// text fields
-		var inputFields = new InputPanel(table.getType());
-		inputFields.setTextAccordingToSelectedRow(table);
-		add(inputFields, BorderLayout.CENTER);
-
-		// buttons
+	@Override
+	public void addButtonsToButtonPanel() {
 		JButton saveButton = new JButton("Speichern");
 		saveButton.addActionListener(e -> {
-			var sql = new SQLBuilder().update(table.getType(), inputFields.getInputString(), table.getSelectedID());
+			var sql = new SQLBuilder().update(table.getType(), inputPanel.getInputString(), table.getSelectedID());
 			try {
 				Connector.getInstance().sendSQLExpression(sql);
 				table.update();
@@ -45,22 +34,13 @@ public class EditWindow extends JDialog {
 
 		JButton resetButton = new JButton("Zurücksetzen");
 		resetButton.addActionListener(e -> {
-			inputFields.setTextAccordingToSelectedRow(table);
+			inputPanel.setTextAccordingToSelectedRow(table);
 		});
-		JButton cancelButton = new JButton("Abbrechen");
-		cancelButton.addActionListener(e -> {
-			dispose();
-		});
-		var buttonPanel = new JPanel();
+
 		buttonPanel.add(saveButton);
 		buttonPanel.add(resetButton);
-		buttonPanel.add(cancelButton);
-		buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		add(buttonPanel, BorderLayout.PAGE_END);
+		buttonPanel.add(new CancelButton(this));
 
-		setLocationRelativeTo(table);
-		pack();
-		setVisible(true);
 	}
 
 }
