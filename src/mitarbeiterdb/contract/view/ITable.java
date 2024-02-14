@@ -1,16 +1,11 @@
 package mitarbeiterdb.contract.view;
 
-import java.sql.SQLException;
-import java.util.List;
+import mitarbeiterdb.implementation.controller.TableType;
 
 public interface ITable {
 
 	String getSelectedID();
 
-	void update() throws SQLException;
-
-	void update(List<List<String>> data) throws SQLException;
-
-	String getType();
+	TableType getType();
 
 }

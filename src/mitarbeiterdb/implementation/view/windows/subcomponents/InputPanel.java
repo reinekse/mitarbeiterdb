@@ -1,4 +1,4 @@
-package mitarbeiterdb.implementation.view.popupwindows.subcomponents;
+package mitarbeiterdb.implementation.view.windows.subcomponents;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -8,19 +8,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import mitarbeiterdb.implementation.controller.TableType;
 import mitarbeiterdb.implementation.view.Table;
 
 public class InputPanel extends JPanel {
 	private ArrayList<JTextField> fields;
 	private String[] labels;
 
-	public InputPanel(String tableType) {
-		if (tableType.equals("personen")) {
+	public InputPanel(TableType tableType) {
+		if (tableType == TableType.PERSONEN) {
 
-			labels = "Nachname, Vorname, Geburtstag, Abteilung, Standort-ID, Anstellungstag ".split(",");
+			labels = "Nachname,Vorname,Geburtstag,Abteilung,Standort-ID,Anstellungstag ".split(",");
 		}
-		if (tableType.equals("standorte")) {
-			labels = "Straße, Hausnummer, PLZ, Ort".split(",");
+		if (tableType == TableType.STANDORTE) {
+			labels = "Straße,Hausnr.,PLZ,Ort".split(",");
 		}
 
 		setLayout(new GridLayout(0, 2, 0, 5));

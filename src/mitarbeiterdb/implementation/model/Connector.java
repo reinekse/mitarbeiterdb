@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mitarbeiterdb.contract.model.IConnector;
+import mitarbeiterdb.implementation.controller.TableType;
 
 public class Connector implements IConnector {
 	final String user = "java_app";
@@ -45,8 +46,8 @@ public class Connector implements IConnector {
 
 			// drop existing tables
 			// (drop 'personen' first, because 'standort_id' is foreign key!)
-			statement.execute(sqlBuilder.dropTable("personen"));
-			statement.execute(sqlBuilder.dropTable("standorte"));
+			statement.execute(sqlBuilder.dropTable(TableType.PERSONEN));
+			statement.execute(sqlBuilder.dropTable(TableType.STANDORTE));
 
 			// create new tables
 			// (create 'standorte' first, because 'standort_id' is foreign key!)
@@ -85,8 +86,8 @@ public class Connector implements IConnector {
 
 	}
 
-	public int getNumberOfRows(String table) throws SQLException {
-		var result = sendSQLQuery("SELECT COUNT(*) FROM " + table);
+	public int getNumberOfRows(TableType table) throws SQLException {
+		var result = sendSQLQuery("SELECT COUNT(*) FROM " + table.toString());
 		return Integer.parseInt(result.get(1).get(0).toString());
 
 	}

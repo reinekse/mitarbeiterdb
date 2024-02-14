@@ -1,5 +1,7 @@
 package mitarbeiterdb.implementation.model;
 
+import mitarbeiterdb.implementation.controller.TableType;
+
 public class SQLBuilder {
 	private String personenColumns = "name, vorname, geburtstag, abteilung, standort_id, anstellungstag";
 	private String standorteColumns = "strasse, hausnummer, plz, ort";
@@ -7,34 +9,34 @@ public class SQLBuilder {
 	// --------------------------------
 	// Actually needed for GUI:
 	// --------------------------------
-	public String selectAll(String table) {
-		var sql = "SELECT * FROM " + table + ";";
+	public String selectAll(TableType table) {
+		var sql = "SELECT * FROM " + table.toString() + ";";
 		return sql;
 	}
 
-	public String delete(String table, String ID) {
-		var sql = "DELETE FROM " + table + " WHERE id = " + ID + ";";
+	public String delete(TableType table, String ID) {
+		var sql = "DELETE FROM " + table.toString() + " WHERE id = " + ID + ";";
 		return sql;
 	}
 
-	public String search(String table, String searchValue) {
-		var sql = "SELECT * FROM " + table;
-		if (table == "personen") {
+	public String simpleSearch(TableType table, String searchValue) {
+		var sql = "SELECT * FROM " + table.toString();
+		if (table == TableType.PERSONEN) {
 			sql += "  WHERE CONCAT_WS(' ', id, " + personenColumns + ") LIKE '%" + searchValue + "%'";
 		}
-		if (table == "standorte") {
+		if (table == TableType.STANDORTE) {
 			sql += " WHERE CONCAT_WS(' ', id, " + standorteColumns + ") LIKE '%" + searchValue + "%'";
 		}
 		return sql + ";";
 	}
 
-	public String advancedSearch(String table, String searchValues) {
-		var sql = "SELECT * FROM " + table;
+	public String advancedSearch(TableType table, String searchValues) {
+		var sql = "SELECT * FROM " + table.toString();
 		String[] colArr = {};
-		if (table == "standorte") {
+		if (table == TableType.STANDORTE) {
 			colArr = standorteColumns.split(",");
 		}
-		if (table == "personen") {
+		if (table == TableType.PERSONEN) {
 			colArr = personenColumns.split(",");
 		}
 
@@ -59,12 +61,12 @@ public class SQLBuilder {
 		return sql;
 	}
 
-	public String update(String table, String values, String ID) {
+	public String update(TableType table, String ID, String values) {
 		String[] colArr = {};
-		if (table == "standorte") {
+		if (table == TableType.STANDORTE) {
 			colArr = standorteColumns.split(",");
 		}
-		if (table == "personen") {
+		if (table == TableType.PERSONEN) {
 			colArr = personenColumns.split(",");
 		}
 
@@ -79,20 +81,20 @@ public class SQLBuilder {
 			}
 		}
 
-		var sql = "UPDATE " + table + " SET " + setStatement + " WHERE id = " + ID + ";";
+		var sql = "UPDATE " + table.toString() + " SET " + setStatement + " WHERE id = " + ID + ";";
 		return sql;
 
 	}
 
-	public String insert(String table, String values) {
+	public String insert(TableType table, String values) {
 		String columns = "";
-		if (table == "standorte") {
+		if (table == TableType.STANDORTE) {
 			columns = standorteColumns;
 		}
-		if (table == "personen") {
+		if (table == TableType.PERSONEN) {
 			columns = personenColumns;
 		}
-		var sql = "INSERT INTO " + table + " (" + columns + ") VALUES (" + values + ");";
+		var sql = "INSERT INTO " + table.toString() + " (" + columns + ") VALUES (" + values + ");";
 		return sql;
 	}
 
@@ -100,8 +102,8 @@ public class SQLBuilder {
 	// Setup
 	// ---------------------------
 
-	public String dropTable(String table) {
-		var sql = "DROP TABLE IF EXISTS " + table + ";";
+	public String dropTable(TableType table) {
+		var sql = "DROP TABLE IF EXISTS " + table.toString() + ";";
 		return sql;
 	}
 

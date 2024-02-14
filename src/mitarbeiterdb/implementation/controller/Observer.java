@@ -3,71 +3,71 @@ package mitarbeiterdb.implementation.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.List;
 
-import mitarbeiterdb.contract.view.IClient;
+import mitarbeiterdb.contract.controller.IObservable;
 import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
-import mitarbeiterdb.implementation.view.SimpleSearchPanel;
-import mitarbeiterdb.implementation.view.popupwindows.AdvancedSearchWindow;
-import mitarbeiterdb.implementation.view.popupwindows.EditWindow;
-import mitarbeiterdb.implementation.view.popupwindows.InsertWindow;
-import mitarbeiterdb.implementation.view.popupwindows.PopupWindow;
+import mitarbeiterdb.implementation.view.Table;
 
 public class Observer implements ActionListener {
 
-	private IClient client;
+	private ButtonPurpose purpose;
+	private IObservable observable;
+	private Table table;
 	private String sql;
 
-	public Observer(IClient client) {
-		this.client = client;
+	public Observer(ButtonPurpose purpose, IObservable observable) {
+		this.purpose = purpose;
+		this.observable = observable;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		var table = client.getTable();
-		if (client instanceof EditWindow) {
-			sql = new SQLBuilder().update(table.getType(), client.getInput(), table.getSelectedID());
+		this.table = observable.getTable();
+		var input = observable.getInput();
+		switch (purpose) {
+		case DELETE:
+			sql = new SQLBuilder().delete(table.getType(), table.getSelectedID());
+			break;
+		case INSERT:
+			sql = new SQLBuilder().insert(table.getType(), input);
+			break;
+		case EDIT:
+			sql = new SQLBuilder().update(table.getType(), table.getSelectedID(), input);
+			break;
+		case SIMPLE_SEARCH:
+			sql = new SQLBuilder().simpleSearch(table.getType(), input);
+			break;
+		case ADVANCED_SEARCH:
+			sql = new SQLBuilder().advancedSearch(table.getType(), input);
+			break;
+		case RESET:
+			observable.resetInput();
+		default:
+			break;
 		}
 
-		if (client instanceof InsertWindow) {
-			sql = new SQLBuilder().insert(table.getType(), client.getInput());
-		}
-
-		if (client instanceof AdvancedSearchWindow) {
-			sql = new SQLBuilder().advancedSearch(table.getType(), client.getInput());
-		}
-
-		if (client instanceof SimpleSearchPanel) {
-			sql = new SQLBuilder().search(table.getType(), client.getInput());
-		}
-
+		List<List<String>> data = null;
 		try {
-			var result = Connector.getInstance().sendSQLQuery(sql);
-			if (result == null) {
-				table.update();
-			} else {
-				table.update(result);
+			if (sql != null) {
+				data = Connector.getInstance().sendSQLQuery(sql);
 			}
+			updateTable(data);
 		} catch (SQLException e1) {
-
 			e1.printStackTrace();
 		}
 
-		if (client instanceof PopupWindow) {
-			((PopupWindow) client).dispose();
-		}
+	}
 
-//			// new SQLBuilder().delete(table.getType(), table.getSelectedID());
-//			// new SQLBuilder().advancedSearch(table.getType(), client.getInput());
-//			// new SQLBuilder().search(table.getType(), searchField.getText());
-//
-//			Connector.getInstance().sendSQLExpression(sql);
-//			table.update();
-//			// window.dispose();
-//		} catch (SQLException e1) {
-//			e1.printStackTrace();
-//		}
-//		}
+	public void updateTable(List<List<String>> data) throws SQLException {
+		var tableModel = (TableModel) table.getModel();
+		if (data == null) {
+			var sql = new SQLBuilder().selectAll(table.getType());
+			data = Connector.getInstance().sendSQLQuery(sql);
+		}
+		tableModel.setData(data);
+		tableModel.fireTableDataChanged();
 	}
 
 }

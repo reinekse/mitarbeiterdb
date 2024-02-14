@@ -1,22 +1,22 @@
-package mitarbeiterdb.implementation.view.popupwindows;
+package mitarbeiterdb.implementation.view.windows;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
-import mitarbeiterdb.contract.view.IClient;
+import mitarbeiterdb.contract.controller.IObservable;
 import mitarbeiterdb.implementation.view.Table;
-import mitarbeiterdb.implementation.view.popupwindows.subcomponents.Heading;
-import mitarbeiterdb.implementation.view.popupwindows.subcomponents.InputPanel;
+import mitarbeiterdb.implementation.view.windows.subcomponents.Heading;
+import mitarbeiterdb.implementation.view.windows.subcomponents.InputPanel;
 
-public abstract class PopupWindow extends JDialog implements IClient {
+public abstract class Window extends JDialog implements IObservable {
 	protected Table table;
 	protected InputPanel inputPanel;
 	protected Heading heading = new Heading("Eintrag: ");
 	protected JPanel buttonPanel = new JPanel();
 
-	public PopupWindow(Table table) {
+	public Window(Table table) {
 		this.table = table;
 		setTitle("Mitarbeiter Datenbank");
 		setLayout(new BorderLayout());
@@ -25,8 +25,8 @@ public abstract class PopupWindow extends JDialog implements IClient {
 		add(inputPanel, BorderLayout.CENTER);
 		addButtonsToButtonPanel();
 		add(buttonPanel, BorderLayout.PAGE_END);
-		setLocationRelativeTo(table);
 		pack();
+		setLocationRelativeTo(table);
 		setVisible(true);
 	}
 
@@ -39,7 +39,12 @@ public abstract class PopupWindow extends JDialog implements IClient {
 
 	@Override
 	public String getInput() {
-		return this.inputPanel.getInputString();
+		return inputPanel.getInputString();
+	}
+
+	@Override
+	public void resetInput() {
+		inputPanel.setTextAccordingToSelectedRow(table);
 	}
 
 }

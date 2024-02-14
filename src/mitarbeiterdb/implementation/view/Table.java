@@ -2,16 +2,13 @@ package mitarbeiterdb.implementation.view;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.SQLException;
-import java.util.List;
 
 import javax.swing.JTable;
 
 import mitarbeiterdb.contract.view.ITable;
 import mitarbeiterdb.implementation.controller.TableModel;
-import mitarbeiterdb.implementation.model.Connector;
-import mitarbeiterdb.implementation.model.SQLBuilder;
-import mitarbeiterdb.implementation.view.popupwindows.OptionWindow;
+import mitarbeiterdb.implementation.controller.TableType;
+import mitarbeiterdb.implementation.view.windows.OptionWindow;
 
 public class Table extends JTable implements ITable {
 
@@ -33,24 +30,9 @@ public class Table extends JTable implements ITable {
 		return getValueAt(getSelectedRow(), 0).toString();
 	}
 
-	public void update() throws SQLException {
-		TableModel tableModel = (TableModel) getModel();
-		var sql = new SQLBuilder().selectAll(getType());
-		List<List<String>> data = Connector.getInstance().sendSQLQuery(sql);
-		tableModel.setData(data);
-		tableModel.fireTableDataChanged();
-	}
-
-	public void update(List<List<String>> data) throws SQLException {
-		TableModel tableModel = (TableModel) getModel();
-		tableModel.setData(data);
-		tableModel.fireTableDataChanged();
-	}
-
 	@Override
-	public String getType() {
+	public TableType getType() {
 		TableModel tableModel = (TableModel) getModel();
-		System.out.println(tableModel.getType());
 		return tableModel.getType();
 
 	}

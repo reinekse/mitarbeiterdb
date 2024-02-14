@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import mitarbeiterdb.implementation.controller.TableType;
 import mitarbeiterdb.implementation.model.Connector;
 
 public class ConnectorTest {
@@ -29,8 +30,8 @@ public class ConnectorTest {
 
 	@Test
 	public void setupDB_fillsTablePersonenAndTableStandorteWithData() throws SQLException {
-		var nRowsPersonen = db.getNumberOfRows("personen");
-		var nRowsStandorte = db.getNumberOfRows("standorte");
+		var nRowsPersonen = db.getNumberOfRows(TableType.PERSONEN);
+		var nRowsStandorte = db.getNumberOfRows(TableType.STANDORTE);
 		assertTrue(nRowsPersonen > 0 && nRowsStandorte > 0);
 
 	}

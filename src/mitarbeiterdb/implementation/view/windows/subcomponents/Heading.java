@@ -1,4 +1,4 @@
-package mitarbeiterdb.implementation.view.popupwindows.subcomponents;
+package mitarbeiterdb.implementation.view.windows.subcomponents;
 
 import java.awt.Font;
 
