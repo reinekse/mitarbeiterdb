@@ -6,11 +6,13 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 
 import mitarbeiterdb.contract.controller.IObservable;
+import mitarbeiterdb.implementation.controller.InputPanelFactory;
 import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.windows.subcomponents.Heading;
 import mitarbeiterdb.implementation.view.windows.subcomponents.InputPanel;
 
 public abstract class Window extends JDialog implements IObservable {
+	private static final long serialVersionUID = 2100327441422231343L;
 	protected Table table;
 	protected InputPanel inputPanel;
 	protected Heading heading = new Heading("Eintrag: ");
@@ -21,7 +23,7 @@ public abstract class Window extends JDialog implements IObservable {
 		setTitle("Mitarbeiter Datenbank");
 		setLayout(new BorderLayout());
 		add(heading, BorderLayout.PAGE_START);
-		this.inputPanel = new InputPanel(table.getType());
+		this.inputPanel = new InputPanelFactory().createPanel(table.getType());
 		add(inputPanel, BorderLayout.CENTER);
 		addButtonsToButtonPanel();
 		add(buttonPanel, BorderLayout.PAGE_END);
@@ -44,7 +46,7 @@ public abstract class Window extends JDialog implements IObservable {
 
 	@Override
 	public void resetInput() {
-		inputPanel.setTextAccordingToSelectedRow(table);
+		inputPanel.setValuesAccordingToSelectedRow(table);
 	}
 
 }

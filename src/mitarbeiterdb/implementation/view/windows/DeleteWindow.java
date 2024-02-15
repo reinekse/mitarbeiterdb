@@ -2,6 +2,7 @@ package mitarbeiterdb.implementation.view.windows;
 
 import java.awt.Component;
 
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 import mitarbeiterdb.implementation.controller.ButtonPurpose;
@@ -11,9 +12,11 @@ import mitarbeiterdb.implementation.view.windows.subcomponents.WindowCloseButton
 
 public class DeleteWindow extends Window {
 
+	private static final long serialVersionUID = 4036911166442338550L;
+
 	public DeleteWindow(Table table) {
 		super(table);
-		inputPanel.setTextAccordingToSelectedRow(table);
+		inputPanel.setValuesAccordingToSelectedRow(table);
 		disableEditing();
 		heading.setText("Eintrag löschen? ");
 	}
@@ -34,10 +37,13 @@ public class DeleteWindow extends Window {
 
 		for (Component component : components) {
 			if (component instanceof JTextField) {
-				JTextField textField = (JTextField) component;
+				var textField = (JTextField) component;
 				textField.setEditable(false);
+			}
+			if (component instanceof JComboBox) {
+				var comboBox = (JComboBox<?>) component;
+				comboBox.setEditable(false);
 			}
 		}
 	}
-
 }

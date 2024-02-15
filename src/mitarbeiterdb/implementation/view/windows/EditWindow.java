@@ -11,7 +11,7 @@ public class EditWindow extends Window {
 
 	public EditWindow(Table table) {
 		super(table);
-		inputPanel.setTextAccordingToSelectedRow(table);
+		inputPanel.setValuesAccordingToSelectedRow(table);
 		heading.setText("Eintrag editieren: ");
 	}
 

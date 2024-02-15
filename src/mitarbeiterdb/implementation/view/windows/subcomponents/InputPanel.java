@@ -4,60 +4,72 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import mitarbeiterdb.implementation.controller.TableType;
 import mitarbeiterdb.implementation.view.Table;
 
-public class InputPanel extends JPanel {
-	private ArrayList<JTextField> fields;
-	private String[] labels;
+public abstract class InputPanel extends JPanel {
+	private static final long serialVersionUID = 7195968973418823368L;
+	protected ArrayList<JComponent> fields;
+	protected String[] labels;
 
-	public InputPanel(TableType tableType) {
-		if (tableType == TableType.PERSONEN) {
-
-			labels = "Nachname,Vorname,Geburtstag,Abteilung,Standort-ID,Anstellungstag ".split(",");
-		}
-		if (tableType == TableType.STANDORTE) {
-			labels = "Straße,Hausnr.,PLZ,Ort".split(",");
-		}
-
+	public InputPanel() {
 		setLayout(new GridLayout(0, 2, 0, 5));
 		setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-		fields = new ArrayList<JTextField>();
-		for (String label : labels) {
-			add(new JLabel(label));
-			var field = new JTextField();
-			fields.add(field);
-			add(field);
+	}
+
+	protected void addComponents() {
+		for (int i = 0; i < fields.size(); i++) {
+			add(new JLabel(labels[i]));
+			add(fields.get(i));
 		}
 	}
 
 	public String getInputString() {
 		var inputString = "";
-		for (JTextField field : fields) {
-			inputString += "," + getText(field);
+		for (JComponent field : fields) {
+			var value = getValue(field);
+			if (value.length() > 0) {
+				value = "'" + value + "'";
+			} else {
+				value = "null";
+			}
+			inputString += "," + value;
 		}
-		return inputString.substring(1);
+		return inputString.substring(1); // remove extra comma
 	}
 
-	// TODO: some TextFields should take only Dates or existing IDs..
-	private String getText(JTextField field) {
-
-		if (field.getText().length() > 0) {
-			return "'" + field.getText() + "'";
-		} else {
-			return null;
+	protected String getValue(JComponent field) {
+		if (field instanceof JTextField) {
+			return ((JTextField) field).getText();
 		}
+		if (field instanceof JComboBox) {
+			return ((JComboBox<?>) field).getSelectedItem().toString();
+		}
+		return null;
 	}
 
-	public void setTextAccordingToSelectedRow(Table table) {
+	protected void setValue(JComponent field, String text) {
+		if (field instanceof JTextField) {
+			((JTextField) field).setText(text);
+		}
+		if (field instanceof JComboBox) {
+			((JComboBox<?>) field).setSelectedItem(text);
+		}
+
+	}
+
+	public void setValuesAccordingToSelectedRow(Table table) {
 
 		for (int col = 0; col < fields.size(); col++) {
 			var row = table.getSelectedRow();
-			fields.get(col).setText(table.getValueAt(row, col + 1).toString());
+			var value = table.getValueAt(row, col + 1).toString();
+			var field = fields.get(col);
+			setValue(field, value);
 		}
 
 	}
