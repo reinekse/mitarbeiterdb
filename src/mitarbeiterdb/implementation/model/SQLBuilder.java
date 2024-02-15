@@ -98,6 +98,11 @@ public class SQLBuilder {
 		return sql;
 	}
 
+	public String getStandortIDs() { // TODO: id should be unique anyway
+		var sql = "SELECT  id FROM standorte;";
+		return sql;
+	}
+
 	// ----------------------------
 	// Setup
 	// ---------------------------
