@@ -10,6 +10,8 @@ import mitarbeiterdb.implementation.controller.TableModel;
 
 public class Frame extends JFrame {
 
+	private static final long serialVersionUID = -5368259921477768764L;
+
 	public Frame(TableModel personenTableModel, TableModel standorteTableModel) throws SQLException {
 		super("Mitarbeiter Datenbank");
 		var tabbedPane = new JTabbedPane();

@@ -9,6 +9,8 @@ import mitarbeiterdb.implementation.view.windows.subcomponents.WindowCloseButton
 
 public class EditWindow extends Window {
 
+	private static final long serialVersionUID = -8354766671828799423L;
+
 	public EditWindow(Table table) {
 		super(table);
 		inputPanel.setValuesAccordingToSelectedRow(table);

@@ -7,6 +7,8 @@ import mitarbeiterdb.implementation.view.windows.subcomponents.WindowCloseButton
 
 public class AdvancedSearchWindow extends Window {
 
+	private static final long serialVersionUID = -6501739572411676517L;
+
 	public AdvancedSearchWindow(Table table) {
 		super(table);
 		heading.setText("Einträge durchsuchen: ");

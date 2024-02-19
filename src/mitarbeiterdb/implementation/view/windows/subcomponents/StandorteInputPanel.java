@@ -12,10 +12,19 @@ public class StandorteInputPanel extends InputPanel {
 	public StandorteInputPanel() {
 		labels = "Straße,Hausnr.,PLZ,Ort".split(",");
 		fields = new ArrayList<JComponent>();
+
+		// Straße
 		fields.add(new JTextField());
+
+		// Hausnr.
 		fields.add(new JTextField());
+
+		// PLZ
 		fields.add(new JTextField());
+
+		// Ort
 		fields.add(new JTextField());
+
 		addComponents();
 	}
 

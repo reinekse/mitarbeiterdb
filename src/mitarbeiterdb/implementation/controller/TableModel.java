@@ -5,6 +5,8 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class TableModel extends AbstractTableModel {
+
+	private static final long serialVersionUID = 3591503122834040375L;
 	private List<List<String>> data;
 	private List<String> columnNames;
 	private TableType type;

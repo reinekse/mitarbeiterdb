@@ -1,6 +1,7 @@
 package mitarbeiterdb.implementation.view.windows.subcomponents;
 
 import java.awt.GridLayout;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -9,6 +10,8 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import org.jdatepicker.impl.JDatePickerImpl;
 
 import mitarbeiterdb.implementation.view.Table;
 
@@ -33,10 +36,10 @@ public abstract class InputPanel extends JPanel {
 		var inputString = "";
 		for (JComponent field : fields) {
 			var value = getValue(field);
-			if (value.length() > 0) {
-				value = "'" + value + "'";
-			} else {
+			if (value.equals("")) {
 				value = "null";
+			} else {
+				value = "'" + value + "'";
 			}
 			inputString += "," + value;
 		}
@@ -45,12 +48,21 @@ public abstract class InputPanel extends JPanel {
 
 	protected String getValue(JComponent field) {
 		if (field instanceof JTextField) {
-			return ((JTextField) field).getText();
+			var value = ((JTextField) field).getText();
+			return value;
 		}
 		if (field instanceof JComboBox) {
-			return ((JComboBox<?>) field).getSelectedItem().toString();
+			var value = ((JComboBox<?>) field).getSelectedItem().toString();
+			return value;
 		}
-		return null;
+		if (field instanceof JDatePickerImpl) {
+			var rawValue = ((JDatePickerImpl) field).getModel().getValue();
+			if (rawValue != null) {
+				var value = new SimpleDateFormat("yyyy-MM-dd").format(rawValue);
+				return value;
+			}
+		}
+		return "";
 	}
 
 	protected void setValue(JComponent field, String text) {

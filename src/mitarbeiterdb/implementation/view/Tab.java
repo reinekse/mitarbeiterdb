@@ -11,6 +11,8 @@ import mitarbeiterdb.implementation.controller.TableModel;
 
 public class Tab extends JPanel {
 
+	private static final long serialVersionUID = 6926303463198033690L;
+
 	Tab(TableModel model) throws SQLException {
 		setLayout(new BorderLayout());
 		var table = new Table(model);

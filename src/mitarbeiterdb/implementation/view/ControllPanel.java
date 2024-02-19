@@ -17,6 +17,8 @@ import mitarbeiterdb.implementation.view.windows.subcomponents.WindowOpenButton;
 import mitarbeiterdb.implementation.view.windows.subcomponents.WindowType;
 
 public class ControllPanel extends JPanel implements IObservable {
+
+	private static final long serialVersionUID = 1206917194142780173L;
 	private Table table;
 	private JTextField searchField;
 

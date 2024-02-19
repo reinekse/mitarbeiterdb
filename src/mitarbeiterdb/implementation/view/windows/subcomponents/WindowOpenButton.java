@@ -9,6 +9,9 @@ import mitarbeiterdb.implementation.view.windows.EditWindow;
 import mitarbeiterdb.implementation.view.windows.InsertWindow;
 
 public class WindowOpenButton extends JButton {
+
+	private static final long serialVersionUID = -946560832423807331L;
+
 	public WindowOpenButton(String label, WindowType type, Table table) {
 		super(label);
 		addActionListener(e -> {

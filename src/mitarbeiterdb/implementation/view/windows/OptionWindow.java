@@ -9,6 +9,9 @@ import mitarbeiterdb.implementation.view.windows.subcomponents.WindowOpenButton;
 import mitarbeiterdb.implementation.view.windows.subcomponents.WindowType;
 
 public class OptionWindow extends JPopupMenu {
+
+	private static final long serialVersionUID = -1014334368999345648L;
+
 	public OptionWindow(Table table, MouseEvent mouseEvent) {
 
 		// Option "Edit"

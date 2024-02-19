@@ -12,6 +12,8 @@ import mitarbeiterdb.implementation.view.windows.OptionWindow;
 
 public class Table extends JTable implements ITable {
 
+	private static final long serialVersionUID = -5583810090162071749L;
+
 	public Table(TableModel model) {
 		super(model);
 		getColumnModel().getColumn(0).setPreferredWidth(10);

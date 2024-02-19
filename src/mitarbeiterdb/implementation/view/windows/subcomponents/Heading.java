@@ -6,6 +6,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
 public class Heading extends JLabel {
+
+	private static final long serialVersionUID = -7557826603662802918L;
+
 	public Heading(String text) {
 		super(text);
 		setHorizontalAlignment(JLabel.CENTER);
