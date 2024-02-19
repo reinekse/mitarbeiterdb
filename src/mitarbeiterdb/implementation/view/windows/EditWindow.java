@@ -7,6 +7,9 @@ import mitarbeiterdb.implementation.controller.Observer;
 import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.windows.subcomponents.WindowCloseButton;
 
+//-------------------------------------
+// Popup window to edit selected row
+//-------------------------------------
 public class EditWindow extends Window {
 
 	private static final long serialVersionUID = -8354766671828799423L;

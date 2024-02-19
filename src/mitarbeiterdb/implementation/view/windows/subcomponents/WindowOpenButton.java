@@ -12,6 +12,9 @@ public class WindowOpenButton extends JButton {
 
 	private static final long serialVersionUID = -946560832423807331L;
 
+	// ---------------------------------------
+	// Button that creates new popup window
+	// ---------------------------------------
 	public WindowOpenButton(String label, WindowType type, Table table) {
 		super(label);
 		addActionListener(e -> {

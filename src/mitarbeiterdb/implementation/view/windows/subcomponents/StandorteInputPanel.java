@@ -18,11 +18,11 @@ public class StandorteInputPanel extends InputPanel {
 		// Straße
 		fields.add(new JTextField());
 
-		// Hausnr.
+		// Hausnummer
 		fields.add(new JTextField());
 
 		// PLZ
-		fields.add(new JTextField());
+		fields.add(new JTextField()); // TODO: limit to 5 numerical characters
 
 		// Ort
 		fields.add(new JTextField());

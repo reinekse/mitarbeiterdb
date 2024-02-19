@@ -2,6 +2,9 @@ package mitarbeiterdb.implementation.model;
 
 import mitarbeiterdb.implementation.controller.TableType;
 
+//-------------------------------------------------------
+// creates SQL statements (but doesn't execute them!
+//-------------------------------------------------------
 public class SQLBuilder {
 	private String personenColumns = "name, vorname, geburtstag, abteilung, standort_id, anstellungstag";
 	private String standorteColumns = "strasse, hausnummer, plz, ort";
@@ -14,11 +17,13 @@ public class SQLBuilder {
 		return sql;
 	}
 
+	// Delete data record by ID
 	public String delete(TableType table, String ID) {
 		var sql = "DELETE FROM " + table.toString() + " WHERE id = " + ID + ";";
 		return sql;
 	}
 
+	// Does search string occur anywhere?
 	public String simpleSearch(TableType table, String searchValue) {
 		var sql = "SELECT * FROM " + table.toString();
 		if (table == TableType.PERSONEN) {
@@ -30,6 +35,7 @@ public class SQLBuilder {
 		return sql + ";";
 	}
 
+	// Does search string occur in specific column?
 	public String advancedSearch(TableType table, String searchValues) {
 		var sql = "SELECT * FROM " + table.toString();
 		String[] colArr = {};
@@ -49,15 +55,17 @@ public class SQLBuilder {
 				searchCondition += valArr[i].replace("'", "");
 				searchCondition += "%'";
 				searchCondition += " AND ";
-
 			}
+
+			// statement mustn't end with " AND ;"
+			// and colArr might contain 'null'
+			// solution: add "true" -> " AND true;"
 			if (i == colArr.length - 1) {
 				searchCondition += true;
 			}
 		}
 
 		sql += searchCondition + ";";
-		System.out.println(sql);
 		return sql;
 	}
 
@@ -76,7 +84,8 @@ public class SQLBuilder {
 			setStatement += colArr[i];
 			setStatement += " = ";
 			setStatement += valArr[i];
-			if (i < colArr.length - 1) {
+
+			if (i < colArr.length - 1) { // Statement mustn't end with ", ;"
 				setStatement += ", ";
 			}
 		}
@@ -112,7 +121,7 @@ public class SQLBuilder {
 		return sql;
 	}
 
-	public String createTablePersonen() {
+	public String createTablePersonen() { // TODO: use values from personenColumns
 		var sql = "CREATE TABLE personen(" + "id INT NOT NULL AUTO_INCREMENT, " + "name VARCHAR(50), "
 				+ "vorname VARCHAR(50), " + "geburtstag DATE, " + "abteilung VARCHAR(50), " + "standort_id INT, "
 				+ "anstellungstag DATE, " + "PRIMARY KEY(id), " + "FOREIGN KEY (standort_id) REFERENCES standorte(id)"
@@ -136,11 +145,10 @@ public class SQLBuilder {
 				+ "('Leew', 'Mareike', '1987-04-22', 'A1', 1, '2015-08-01'), "
 				+ "('Schnieders', 'Martin', '1981-09-11', 'C1', 3, '2023-05-01'), "
 				+ "('Meyer-Friedrichsen', 'Julian', '1990-06-18', 'A2', 1, '2022-10-01')" + ";";
-		System.out.println(sql);
 		return sql;
 	}
 
-	public String createTableStandorte() {
+	public String createTableStandorte() { // TODO: use values from standorteColumns
 		return "CREATE TABLE standorte (" + "id INT NOT NULL AUTO_INCREMENT," + "strasse VARCHAR(50),"
 				+ "hausnummer VARCHAR(6)," + "plz VARCHAR(6)," + "ort VARCHAR(50)," + "PRIMARY KEY(id)" + ");";
 	}

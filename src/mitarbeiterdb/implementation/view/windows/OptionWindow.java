@@ -8,6 +8,10 @@ import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.windows.subcomponents.WindowOpenButton;
 import mitarbeiterdb.implementation.view.windows.subcomponents.WindowType;
 
+//-------------------------------------
+// Small Window to choose whether 
+// Edit or Delete Window should open
+//-------------------------------------
 public class OptionWindow extends JPopupMenu {
 
 	private static final long serialVersionUID = -1014334368999345648L;
@@ -23,7 +27,7 @@ public class OptionWindow extends JPopupMenu {
 		var deleteButton = new WindowOpenButton("Löschen", WindowType.DELETE, table);
 		deleteButton.setBorderPainted(false);
 		add(deleteButton);
-		show(table, mouseEvent.getX(), mouseEvent.getY());
+		show(table, mouseEvent.getX(), mouseEvent.getY()); // appears at mouse position
 	}
 
 }

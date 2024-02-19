@@ -16,6 +16,9 @@ import mitarbeiterdb.implementation.controller.Observer;
 import mitarbeiterdb.implementation.view.windows.subcomponents.WindowOpenButton;
 import mitarbeiterdb.implementation.view.windows.subcomponents.WindowType;
 
+//------------------------------------------------------------------------
+// Panel with options to add new data record or search existing records
+//------------------------------------------------------------------------
 public class ControllPanel extends JPanel implements IObservable {
 
 	private static final long serialVersionUID = 1206917194142780173L;

@@ -29,6 +29,7 @@ public class Table extends JTable implements ITable {
 
 	}
 
+	// show user other column names than in DB
 	private void beautifyHeader(TableModel model) {
 		var header = getTableHeader();
 		for (int i = 0; i < getColumnCount(); i++) {
@@ -48,13 +49,13 @@ public class Table extends JTable implements ITable {
 		}
 	}
 
+	// get displayed column names
 	public ArrayList<String> getHeader() {
 		var header = getTableHeader();
 		var columnNames = new ArrayList<String>();
 		for (int i = 0; i < getColumnCount(); i++) {
 			var column = header.getColumnModel().getColumn(i);
 			var name = column.getHeaderValue().toString();
-			System.out.println(name);
 			columnNames.add(name);
 		}
 		return columnNames;

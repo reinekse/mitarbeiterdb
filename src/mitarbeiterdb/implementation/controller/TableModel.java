@@ -1,6 +1,5 @@
 package mitarbeiterdb.implementation.controller;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
@@ -8,6 +7,7 @@ import javax.swing.table.AbstractTableModel;
 import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
 
+// Connection between tables in DB and tables in GUI
 public class TableModel extends AbstractTableModel {
 
 	private static final long serialVersionUID = 3591503122834040375L;
@@ -15,13 +15,13 @@ public class TableModel extends AbstractTableModel {
 	private List<String> columnNames;
 	private TableType tableType;
 
-	public TableModel(TableType tableType) throws SQLException {
+	public TableModel(TableType tableType) {
 		this.tableType = tableType;
 		var sql = new SQLBuilder().selectAll(tableType);
 		var dataWithColumnNames = Connector.getInstance().sendSQLQuery(sql);
 		this.columnNames = dataWithColumnNames.get(0);
 		this.data = dataWithColumnNames;
-		this.data.remove(0);
+		this.data.remove(0); // remove row with column names
 	}
 
 	@Override

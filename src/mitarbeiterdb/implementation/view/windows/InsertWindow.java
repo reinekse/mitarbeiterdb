@@ -5,6 +5,9 @@ import mitarbeiterdb.implementation.controller.Observer;
 import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.windows.subcomponents.WindowCloseButton;
 
+//-------------------------------------
+// Popup window to add new data record
+//-------------------------------------
 public class InsertWindow extends Window {
 	private static final long serialVersionUID = 4174979247808594995L;
 
@@ -21,8 +24,6 @@ public class InsertWindow extends Window {
 
 		var cancelButton = new WindowCloseButton("Abbrechen", this);
 		buttonPanel.add(cancelButton);
-		// buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
 	}
 
 }

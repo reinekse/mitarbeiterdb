@@ -12,7 +12,7 @@ public class PersonenInputPanel extends InputPanel {
 
 	private static final long serialVersionUID = 6282235112545942707L;
 
-	public PersonenInputPanel(Table table, ArrayList<String> standortIDs) {
+	public PersonenInputPanel(Table table, ArrayList<String> availableStandortIDs) {
 		super(table);
 		fields = new ArrayList<JComponent>();
 
@@ -30,7 +30,7 @@ public class PersonenInputPanel extends InputPanel {
 
 		// Standort-ID
 		var standortIDField = new JComboBox<String>();
-		for (String id : standortIDs) {
+		for (String id : availableStandortIDs) {
 			standortIDField.addItem(id);
 		}
 		fields.add(standortIDField);
