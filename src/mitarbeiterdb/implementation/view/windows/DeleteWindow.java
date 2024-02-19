@@ -16,7 +16,7 @@ public class DeleteWindow extends Window {
 
 	public DeleteWindow(Table table) {
 		super(table);
-		inputPanel.setValuesAccordingToSelectedRow(table);
+		inputPanel.setValuesAccordingToSelectedRow();
 		disableEditing();
 		heading.setText("Eintrag löschen? ");
 	}
