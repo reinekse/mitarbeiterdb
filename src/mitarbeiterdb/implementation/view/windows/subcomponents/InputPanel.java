@@ -1,5 +1,6 @@
 package mitarbeiterdb.implementation.view.windows.subcomponents;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,16 +19,22 @@ import mitarbeiterdb.implementation.view.Table;
 public abstract class InputPanel extends JPanel {
 	private static final long serialVersionUID = 7195968973418823368L;
 	protected ArrayList<JComponent> fields;
-	protected String[] labels;
+	protected ArrayList<String> labels;
+	protected Table table;
 
-	public InputPanel() {
+	public InputPanel(Table table) {
+		this.table = table;
+		labels = table.getHeader();
+		labels.remove(0); // remove ID
 		setLayout(new GridLayout(0, 2, 0, 5));
 		setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 	}
 
 	protected void addComponents() {
 		for (int i = 0; i < fields.size(); i++) {
-			add(new JLabel(labels[i]));
+			System.out.println(labels.get(i));
+			add(new JLabel(labels.get(i)));
+			fields.get(i).setPreferredSize(new Dimension(100, 22));
 			add(fields.get(i));
 		}
 	}
@@ -75,7 +82,7 @@ public abstract class InputPanel extends JPanel {
 
 	}
 
-	public void setValuesAccordingToSelectedRow(Table table) {
+	public void setValuesAccordingToSelectedRow() {
 
 		for (int col = 0; col < fields.size(); col++) {
 			var row = table.getSelectedRow();

@@ -7,22 +7,26 @@ import com.formdev.flatlaf.FlatLightLaf;
 import mitarbeiterdb.implementation.controller.TableModel;
 import mitarbeiterdb.implementation.controller.TableType;
 import mitarbeiterdb.implementation.model.Connector;
-import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.Frame;
 
 public class Main {
 
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) {
 
 		FlatLightLaf.setup();
-		var db = Connector.getInstance();
-		db.setupDB();
-		var sql = new SQLBuilder();
-		var personen = db.sendSQLQuery(sql.selectAll(TableType.PERSONEN));
-		var personenTableModel = new TableModel(personen);
-		var standorte = db.sendSQLQuery(sql.selectAll(TableType.STANDORTE));
-		var standorteTableModel = new TableModel(standorte);
-		new Frame(personenTableModel, standorteTableModel);
+		try {
+			Connector.getInstance().setupDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			var personenTableModel = new TableModel(TableType.PERSONEN);
+			var standorteTableModel = new TableModel(TableType.STANDORTE);
+			new Frame(personenTableModel, standorteTableModel);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -13,7 +13,7 @@ public class EditWindow extends Window {
 
 	public EditWindow(Table table) {
 		super(table);
-		inputPanel.setValuesAccordingToSelectedRow(table);
+		inputPanel.setValuesAccordingToSelectedRow();
 		heading.setText("Eintrag editieren: ");
 	}
 

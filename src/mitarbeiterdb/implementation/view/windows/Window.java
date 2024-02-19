@@ -23,7 +23,7 @@ public abstract class Window extends JDialog implements IObservable {
 		setTitle("Mitarbeiter Datenbank");
 		setLayout(new BorderLayout());
 		add(heading, BorderLayout.PAGE_START);
-		this.inputPanel = new InputPanelFactory().createPanel(table.getType());
+		this.inputPanel = new InputPanelFactory().createInputPanel(table);
 		add(inputPanel, BorderLayout.CENTER);
 		addButtonsToButtonPanel();
 		add(buttonPanel, BorderLayout.PAGE_END);
@@ -46,7 +46,7 @@ public abstract class Window extends JDialog implements IObservable {
 
 	@Override
 	public void resetInput() {
-		inputPanel.setValuesAccordingToSelectedRow(table);
+		inputPanel.setValuesAccordingToSelectedRow();
 	}
 
 }

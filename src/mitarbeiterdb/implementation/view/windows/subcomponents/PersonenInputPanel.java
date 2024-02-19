@@ -6,12 +6,14 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 
+import mitarbeiterdb.implementation.view.Table;
+
 public class PersonenInputPanel extends InputPanel {
 
 	private static final long serialVersionUID = 6282235112545942707L;
 
-	public PersonenInputPanel(ArrayList<String> standortIDs) {
-		labels = "Nachname,Vorname,Geburtstag,Abteilung,Standort-ID,Anstellungstag ".split(",");
+	public PersonenInputPanel(Table table, ArrayList<String> standortIDs) {
+		super(table);
 		fields = new ArrayList<JComponent>();
 
 		// Nachname

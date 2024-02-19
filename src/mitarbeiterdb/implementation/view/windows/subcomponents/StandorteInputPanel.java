@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 
+import mitarbeiterdb.implementation.view.Table;
+
 public class StandorteInputPanel extends InputPanel {
 
 	private static final long serialVersionUID = 2431465125410667545L;
 
-	public StandorteInputPanel() {
-		labels = "Straße,Hausnr.,PLZ,Ort".split(",");
+	public StandorteInputPanel(Table table) {
+		super(table);
 		fields = new ArrayList<JComponent>();
 
 		// Straße

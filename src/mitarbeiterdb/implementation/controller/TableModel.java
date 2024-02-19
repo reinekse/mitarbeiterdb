@@ -1,24 +1,25 @@
 package mitarbeiterdb.implementation.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
+
+import mitarbeiterdb.implementation.model.Connector;
+import mitarbeiterdb.implementation.model.SQLBuilder;
 
 public class TableModel extends AbstractTableModel {
 
 	private static final long serialVersionUID = 3591503122834040375L;
 	private List<List<String>> data;
 	private List<String> columnNames;
-	private TableType type;
+	private TableType tableType;
 
-	public TableModel(List<List<String>> dataWithColumnNames) {
+	public TableModel(TableType tableType) throws SQLException {
+		this.tableType = tableType;
+		var sql = new SQLBuilder().selectAll(tableType);
+		var dataWithColumnNames = Connector.getInstance().sendSQLQuery(sql);
 		this.columnNames = dataWithColumnNames.get(0);
-		if (columnNames.get(1).equals("name")) {
-			this.type = TableType.PERSONEN;
-		}
-		if (columnNames.get(1).equals("strasse")) {
-			this.type = TableType.STANDORTE;
-		}
 		this.data = dataWithColumnNames;
 		this.data.remove(0);
 	}
@@ -57,7 +58,7 @@ public class TableModel extends AbstractTableModel {
 	}
 
 	public TableType getType() {
-		return type;
+		return tableType;
 	}
 
 }

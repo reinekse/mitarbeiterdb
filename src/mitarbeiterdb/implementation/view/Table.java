@@ -2,6 +2,7 @@ package mitarbeiterdb.implementation.view;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JTable;
 
@@ -17,6 +18,7 @@ public class Table extends JTable implements ITable {
 	public Table(TableModel model) {
 		super(model);
 		getColumnModel().getColumn(0).setPreferredWidth(10);
+		beautifyHeader(model);
 
 		addMouseListener(new MouseAdapter() {
 			@Override
@@ -24,6 +26,38 @@ public class Table extends JTable implements ITable {
 				new OptionWindow(Table.this, mouseEvent);
 			}
 		});
+
+	}
+
+	private void beautifyHeader(TableModel model) {
+		var header = getTableHeader();
+		for (int i = 0; i < getColumnCount(); i++) {
+			var column = header.getColumnModel().getColumn(i);
+			var columnName = model.getColumnName(i);
+			column.setHeaderValue(columnName.substring(0, 1).toUpperCase() + columnName.substring(1));
+			if (columnName.equals("id") || columnName.equals("plz")) {
+				column.setHeaderValue(columnName.toUpperCase());
+			}
+			if (columnName.equals("strasse")) {
+				column.setHeaderValue("Straße");
+			}
+			if (columnName.equals("standort_id")) {
+				column.setHeaderValue("Standort-ID");
+			}
+
+		}
+	}
+
+	public ArrayList<String> getHeader() {
+		var header = getTableHeader();
+		var columnNames = new ArrayList<String>();
+		for (int i = 0; i < getColumnCount(); i++) {
+			var column = header.getColumnModel().getColumn(i);
+			var name = column.getHeaderValue().toString();
+			System.out.println(name);
+			columnNames.add(name);
+		}
+		return columnNames;
 
 	}
 

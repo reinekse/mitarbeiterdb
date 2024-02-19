@@ -6,13 +6,14 @@ import java.util.List;
 
 import mitarbeiterdb.implementation.model.Connector;
 import mitarbeiterdb.implementation.model.SQLBuilder;
+import mitarbeiterdb.implementation.view.Table;
 import mitarbeiterdb.implementation.view.windows.subcomponents.InputPanel;
 import mitarbeiterdb.implementation.view.windows.subcomponents.PersonenInputPanel;
 import mitarbeiterdb.implementation.view.windows.subcomponents.StandorteInputPanel;
 
 public class InputPanelFactory {
-	public InputPanel createPanel(TableType tableType) {
-		if (tableType == TableType.PERSONEN) {
+	public InputPanel createInputPanel(Table table) {
+		if (table.getType() == TableType.PERSONEN) {
 			var sql = new SQLBuilder().getStandortIDs();
 			var standortIDs = new ArrayList<String>();
 			try {
@@ -25,10 +26,10 @@ public class InputPanelFactory {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			return new PersonenInputPanel(standortIDs);
+			return new PersonenInputPanel(table, standortIDs);
 		}
-		if (tableType == TableType.STANDORTE) {
-			return new StandorteInputPanel();
+		if (table.getType() == TableType.STANDORTE) {
+			return new StandorteInputPanel(table);
 		}
 		return null;
 

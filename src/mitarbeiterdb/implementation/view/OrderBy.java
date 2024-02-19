@@ -1,6 +1,6 @@
-package mitarbeiterdb.implementation.view;
+//package mitarbeiterdb.implementation.view;
 
-public class OrderBy {
+//public class OrderBy {
 
 //	JButton sortButton = new JButton("Sortiere!");
 //	sortButton.setBounds(50, 30, 90, 20);
@@ -25,4 +25,4 @@ public class OrderBy {
 //	var columnChooser = new JComboBox(column);
 //	columnChooser.setBounds(50, 50, 90, 20);
 //	add(columnChooser);
-}
+//}
