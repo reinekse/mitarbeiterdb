@@ -17,7 +17,7 @@ public class Table extends JTable implements ITable {
 
 	public Table(TableModel model) {
 		super(model);
-		getColumnModel().getColumn(0).setPreferredWidth(10);
+		getColumnModel().getColumn(0).setPreferredWidth(10); // TODO: adjust column size based on text width
 		beautifyHeader(model);
 
 		addMouseListener(new MouseAdapter() {

@@ -45,16 +45,16 @@ public class DeleteWindow extends Window {
 		for (Component component : components) {
 			if (component instanceof JTextField) {
 				var textField = (JTextField) component;
-				textField.setEditable(false);
+				textField.setEnabled(false);
 			}
 			if (component instanceof JComboBox) {
 				var comboBox = (JComboBox<?>) component;
-				comboBox.setEditable(false);
+				comboBox.setEnabled(false);
 			}
 
 			if (component instanceof JDatePickerImpl) {
 				var datePicker = (JDatePickerImpl) component;
-				datePicker.setTextEditable(false); // TODO: doesn't work properly
+				datePicker.setEnabled(false); // TODO: doesn't work properly
 			}
 		}
 	}

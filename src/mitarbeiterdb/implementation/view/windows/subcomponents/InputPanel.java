@@ -3,8 +3,6 @@ package mitarbeiterdb.implementation.view.windows.subcomponents;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -90,10 +88,13 @@ public abstract class InputPanel extends JPanel {
 		}
 
 		if (field instanceof JDatePickerImpl) {
-			var formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-			var date = LocalDate.parse(text, formatter);
-			((JDatePickerImpl) field).getModel().setDate(date.getYear(), date.getMonthValue() - 1,
-					date.getDayOfMonth()); // TODO doesnt work
+
+			String[] dateParts = text.split("-");
+			int year = Integer.parseInt(dateParts[0]);
+			int month = Integer.parseInt(dateParts[1]) - 1; // months start at 0
+			int day = Integer.parseInt(dateParts[2]);
+			((JDatePickerImpl) field).getModel().setDate(year, month, day);
+			((JDatePickerImpl) field).getModel().setSelected(true); // display choosen date
 		}
 
 	}

@@ -16,7 +16,8 @@ public class DatePicker { // Builder Pattern
 		model.setDate(year, 6, 1); // month and day will be 1st of June (random choice)
 
 		JDatePanelImpl datePanel = new JDatePanelImpl(model, new Properties());
-		DateComponentFormatter formatter = new DateComponentFormatter(); // dd.MM.yyyy
+		DateComponentFormatter formatter = new DateComponentFormatter(); // will use local date format (dd.MM.yyyy)
+		// TODO: use local date format (dd.MM.yyyy instead of yyyy-MM-dd) also in table
 		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, formatter);
 		return datePicker;
 	}
