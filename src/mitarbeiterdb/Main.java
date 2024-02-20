@@ -1,27 +1,26 @@
 package mitarbeiterdb;
 
-import java.sql.SQLException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
 import mitarbeiterdb.implementation.controller.TableModel;
+import mitarbeiterdb.implementation.controller.TableType;
 import mitarbeiterdb.implementation.model.Connector;
-import mitarbeiterdb.implementation.model.SQLBuilder;
 import mitarbeiterdb.implementation.view.Frame;
 
 public class Main {
+	private static final Logger logger = LogManager.getLogger(Main.class);
 
-	public static void main(String[] args) throws SQLException {
-
-		FlatLightLaf.setup();
-		var db = Connector.getInstance();
-		db.setupDB();
-		var sql = new SQLBuilder();
-		var personen = db.sendSQLQuery(sql.selectAll("personen"));
-		var personenTableModel = new TableModel(personen);
-		var standorte = db.sendSQLQuery(sql.selectAll("standorte"));
-		var standorteTableModel = new TableModel(standorte);
+	public static void main(String[] args) {
+		FlatLightLaf.setup(); // improve 'Look & Feel'
+		logger.info("\nStart der Anwendung.\n");
+		Connector.getInstance().setupDB();
+		var personenTableModel = new TableModel(TableType.PERSONEN);
+		var standorteTableModel = new TableModel(TableType.STANDORTE);
 		new Frame(personenTableModel, standorteTableModel);
+
 	}
 
 }

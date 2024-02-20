@@ -39,12 +39,4 @@ public class SQLBuilderTest {
 
 	}
 
-	@Test
-	public void dropTable_validInput_returnSQLStatement() {
-		var actual = sqlBuilder.dropTable("table");
-		var expected = "DROP TABLE IF EXISTS table;";
-		assertEquals(expected, actual);
-
-	}
-
 }

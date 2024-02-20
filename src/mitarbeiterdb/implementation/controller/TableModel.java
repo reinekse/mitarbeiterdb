@@ -4,21 +4,24 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import mitarbeiterdb.implementation.model.Connector;
+import mitarbeiterdb.implementation.model.SQLBuilder;
+
+// Connection between tables in DB and tables in GUI
 public class TableModel extends AbstractTableModel {
+
+	private static final long serialVersionUID = 3591503122834040375L;
 	private List<List<String>> data;
 	private List<String> columnNames;
-	private String type = "test";
+	private TableType tableType;
 
-	public TableModel(List<List<String>> dataWithColumnNames) {
+	public TableModel(TableType tableType) {
+		this.tableType = tableType;
+		var sql = new SQLBuilder().selectAll(tableType);
+		var dataWithColumnNames = Connector.getInstance().sendSQLQuery(sql);
 		this.columnNames = dataWithColumnNames.get(0);
-		if (columnNames.get(1).equals("name")) {
-			this.type = "personen";
-		}
-		if (columnNames.get(1).equals("strasse")) {
-			this.type = "standorte";
-		}
 		this.data = dataWithColumnNames;
-		this.data.remove(0);
+		this.data.remove(0); // remove row with column names
 	}
 
 	@Override
@@ -54,8 +57,8 @@ public class TableModel extends AbstractTableModel {
 
 	}
 
-	public String getType() {
-		return type;
+	public TableType getType() {
+		return tableType;
 	}
 
 }

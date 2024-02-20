@@ -1,0 +1,519 @@
+2024-34-19 15:34:28 [main] %- 5level mitarbeiterdb.Main - 
+Anwendung wird gestartet
+
+2024-34-19 15:34:29 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+ Verbindung zur Datenbank wird aufgebaut.
+
+2024-34-19 15:34:29 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Datenbanktabellen werden erstellt.
+
+2024-34-19 15:34:29 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgende Anfrage wird an die Datenbank gestellt:
+SELECT * FROM personen;
+
+2024-34-19 15:34:29 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgende Anfrage wird an die Datenbank gestellt:
+SELECT * FROM standorte;
+
+2024-43-19 15:43:29 [main] %- 5level mitarbeiterdb.Main - 
+Anwendung wird gestartet
+
+2024-43-19 15:43:30 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+ Verbindung zur Datenbank wird aufgebaut.
+
+2024-43-19 15:43:30 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Datenbanktabellen werden erstellt.
+
+2024-43-19 15:43:30 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgende Anfrage wird an die Datenbank gestellt:
+SELECT * FROM personen;
+
+2024-43-19 15:43:30 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgende Anfrage wird an die Datenbank gestellt:
+SELECT * FROM standorte;
+
+2024-48-19 15:48:52 [main] %- 5level mitarbeiterdb.Main - 
+Anwendung wird gestartet
+
+2024-48-19 15:48:52 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+ Verbindung zur Datenbank wird aufgebaut.
+
+2024-48-19 15:48:53 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Datenbanktabellen werden erstellt.
+
+2024-48-19 15:48:53 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgende Anfrage wird an die Datenbank gestellt:
+SELECT * FROM personen;
+
+2024-48-19 15:48:53 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgende Anfrage wird an die Datenbank gestellt:
+SELECT * FROM standorte;
+
+2024-59-19 15:59:16 [main] %- 5level mitarbeiterdb.Main - 
+Anwendung wird gestartet
+
+2024-59-19 15:59:16 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+ Verbindung zur Datenbank wird aufgebaut.
+
+2024-59-19 15:59:17 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Datenbanktabellen werden neu angelegt.
+
+2024-59-19 15:59:17 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgende SQL-Anfrage wird an die Datenbank gestellt:
+SELECT * FROM personen;
+
+2024-59-19 15:59:17 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgende SQL-Anfrage wird an die Datenbank gestellt:
+SELECT * FROM standorte;
+
+2024-59-19 15:59:25 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgende SQL-Anfrage wird an die Datenbank gestellt:
+SELECT  id FROM standorte;
+
+2024-59-19 15:59:33 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgende SQL-Anfrage wird an die Datenbank gestellt:
+INSERT INTO personen (name, vorname, geburtstag, abteilung, standort_id, anstellungstag) VALUES ('er',null,null,null,null,null);
+
+2024-59-19 15:59:33 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgende SQL-Anfrage wird an die Datenbank gestellt:
+SELECT * FROM personen;
+
+2024-10-19 16:10:01 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-10-19 16:10:02 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+ Aufbau der Datenbankverbindung
+
+2024-10-19 16:10:02 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen
+
+2024-10-19 16:10:03 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgendes SQL-Statement wird an die Datenbank gesendet:
+SELECT * FROM personen;
+
+2024-10-19 16:10:03 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Folgendes SQL-Statement wird an die Datenbank gesendet:
+SELECT * FROM standorte;
+
+2024-12-19 16:12:49 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-12-19 16:12:49 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-12-19 16:12:50 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-12-19 16:12:50 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SQL-Anfrage:
+SELECT * FROM personen;
+
+2024-12-19 16:12:50 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SQL-Anfrage:
+SELECT * FROM standorte;
+
+2024-14-19 16:14:03 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-14-19 16:14:04 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-14-19 16:14:04 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-14-19 16:14:04 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SQL-Anfrage:
+SELECT * FROM personen;
+
+2024-14-19 16:14:04 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SQL-Anfrage:
+SELECT * FROM standorte;
+
+2024-14-19 16:14:07 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SQL-Anfrage:
+SELECT * FROM personen;
+
+2024-14-19 16:14:15 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.controller.Observer - 
+Einfache Suche eines Datenbankeintrags.
+
+2024-14-19 16:14:15 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SQL-Anfrage:
+SELECT * FROM personen  WHERE CONCAT_WS(' ', id, name, vorname, geburtstag, abteilung, standort_id, anstellungstag) LIKE '%er%';
+
+2024-15-19 16:15:40 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-15-19 16:15:41 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-15-19 16:15:41 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-15-19 16:15:41 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-15-19 16:15:41 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-15-19 16:15:48 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT  id FROM standorte;
+
+2024-15-19 16:15:50 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.controller.Observer - 
+Hinzufügen eines neuen Datenbankeintrags:
+
+2024-15-19 16:15:50 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+INSERT INTO personen (name, vorname, geburtstag, abteilung, standort_id, anstellungstag) VALUES (null,null,null,null,null,null);
+
+2024-15-19 16:15:50 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-23-19 16:23:58 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-23-19 16:23:59 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-23-19 16:23:59 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-23-19 16:23:59 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-23-19 16:23:59 [main] %- 5level mitarbeiterdb.implementation.model.Connector - Tabellen existieren bereits und werden überschrieben.
+2024-23-19 16:23:59 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen fehlgeschlagen.
+
+java.sql.SQLException: No operations allowed after statement closed.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:82) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at mitarbeiterdb.implementation.model.Connector.setupDB(Connector.java:65) [bin/:?]
+	at mitarbeiterdb.Main.main(Main.java:19) [bin/:?]
+Caused by: com.mysql.cj.exceptions.StatementIsClosedException: No operations allowed after statement closed.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.checkClosed(StatementImpl.java:336) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:652) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	... 3 more
+2024-23-19 16:23:59 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-23-19 16:23:59 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-26-19 16:26:33 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-26-19 16:26:33 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-26-19 16:26:34 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-26-19 16:26:34 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-26-19 16:26:34 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Tabellen existieren bereits und werden überschrieben.
+
+2024-26-19 16:26:34 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-26-19 16:26:34 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-27-19 16:27:40 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-27-19 16:27:40 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-27-19 16:27:41 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-27-19 16:27:41 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-27-19 16:27:41 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Tabellen existieren bereits und werden überschrieben.
+
+2024-27-19 16:27:41 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-27-19 16:27:41 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-28-19 16:28:33 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-28-19 16:28:33 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-28-19 16:28:34 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-28-19 16:28:34 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-28-19 16:28:34 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-28-19 16:28:34 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-28-19 16:28:51 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-28-19 16:28:51 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-28-19 16:28:52 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-28-19 16:28:52 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-28-19 16:28:52 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Tabellen existieren bereits und werden überschrieben.
+
+2024-28-19 16:28:52 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-28-19 16:28:52 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-33-19 16:33:04 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-33-19 16:33:05 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-33-19 16:33:05 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-33-19 16:33:05 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-33-19 16:33:05 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Tabellen existieren bereits und werden überschrieben.
+
+2024-33-19 16:33:05 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-33-19 16:33:05 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-33-19 16:33:11 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT  id FROM standorte;
+
+2024-52-19 16:52:28 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-52-19 16:52:28 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-52-19 16:52:29 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-52-19 16:52:29 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-52-19 16:52:29 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Tabellen existieren bereits und werden überschrieben.
+
+2024-52-19 16:52:29 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-52-19 16:52:29 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-52-19 16:52:38 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT  id FROM standorte;
+
+2024-52-19 16:52:41 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.controller.Observer - 
+Hinzufügen eines neuen Datenbankeintrags:
+
+2024-52-19 16:52:41 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+INSERT INTO personen (name, vorname, geburtstag, abteilung, standort_id, anstellungstag) VALUES ('er',null,null,null,null,null);
+
+2024-52-19 16:52:41 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-53-19 16:53:04 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-53-19 16:53:04 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-53-19 16:53:05 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-53-19 16:53:05 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-53-19 16:53:05 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Tabellen existieren bereits und werden überschrieben.
+
+2024-53-19 16:53:05 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-53-19 16:53:05 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-53-19 16:53:09 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT  id FROM standorte;
+
+2024-53-19 16:53:12 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.controller.Observer - 
+Hinzufügen eines neuen Datenbankeintrags:
+
+2024-53-19 16:53:12 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+INSERT INTO personen (name, vorname, geburtstag, abteilung, standort_id, anstellungstag) VALUES ('sd',null,null,null,null,null);
+
+2024-53-19 16:53:12 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-12-19 17:12:37 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT  id FROM standorte;
+
+2024-27-19 17:27:49 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-27-19 17:27:49 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-27-19 17:27:50 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-27-19 17:27:50 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-27-19 17:27:50 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Tabellen existieren bereits und werden überschrieben.
+
+2024-27-19 17:27:50 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-27-19 17:27:50 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-27-19 17:27:56 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT  id FROM standorte;
+
+2024-39-19 17:39:32 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-39-19 17:39:32 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-39-19 17:39:32 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-39-19 17:39:32 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-39-19 17:39:32 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Tabellen existieren bereits und werden überschrieben.
+
+2024-39-19 17:39:33 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-39-19 17:39:33 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-39-19 17:39:37 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT  id FROM standorte;
+
+2024-39-19 17:39:45 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.controller.Observer - 
+Einfache Suche eines Datenbankeintrags:
+
+2024-39-19 17:39:45 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen  WHERE CONCAT_WS(' ', id, name, vorname, geburtstag, abteilung, standort_id, anstellungstag) LIKE '%fed%';
+
+2024-39-19 17:39:46 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-43-19 17:43:00 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-43-19 17:43:00 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-43-19 17:43:01 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-43-19 17:43:01 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-43-19 17:43:01 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Tabellen existieren bereits und werden überschrieben.
+
+2024-43-19 17:43:01 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-43-19 17:43:01 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-43-19 17:43:05 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT  id FROM standorte;
+
+2024-43-19 17:43:25 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-43-19 17:43:25 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-43-19 17:43:26 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-43-19 17:43:26 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-43-19 17:43:26 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Tabellen existieren bereits und werden überschrieben.
+
+2024-43-19 17:43:26 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-43-19 17:43:26 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-43-19 17:43:29 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT  id FROM standorte;
+
+2024-43-19 17:43:37 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT  id FROM standorte;
+
+2024-59-19 17:59:43 [main] %- 5level mitarbeiterdb.Main - 
+Start der Anwendung.
+
+2024-59-19 17:59:43 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Aufbau der Datenbankverbindung.
+
+2024-59-19 17:59:44 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Erstellen der Datenbanktabellen.
+
+2024-59-19 17:59:44 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SHOW TABLES
+
+2024-59-19 17:59:44 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+Tabellen existieren bereits und werden überschrieben.
+
+2024-59-19 17:59:44 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM personen;
+
+2024-59-19 17:59:44 [main] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT * FROM standorte;
+
+2024-59-19 17:59:47 [AWT-EventQueue-0] %- 5level mitarbeiterdb.implementation.model.Connector - 
+SELECT  id FROM standorte;
+
